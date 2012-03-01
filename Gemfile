@@ -6,9 +6,10 @@ gem 'rails', '3.2.2'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'sqlite3'
-gem 'formtastic'
+gem 'formtastic', '~>1.2.4' # Surveyor is not compatible with Formtastic 2.x
 gem 'omniauth'
 gem 'cancan'
+gem 'surveyor'
 
 # Gems used only for assets and not required
 # in production environments by default.
