@@ -35,3 +35,7 @@ Evaluator::Application.configure do
   # Expands the lines which load the assets
   config.assets.debug = true
 end
+
+ENV['GITHUB_KEY']    = '33f9f1839922ff589b2a'
+ENV['GITHUB_SECRET'] = '00de8ac3813c0087f0a4bc7efcff9296af44cd0d'
+

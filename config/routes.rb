@@ -1,9 +1,21 @@
 Evaluator::Application.routes.draw do
+  root :to => 'evaluations#index'
+
   resources :assignments
 
   resources :evaluations
 
   resources :people
+
+  resource :session, :only => [:new, :create, :destroy]
+
+  match '/signin',                  :to => 'sessions#new',     :as => :signin
+  match '/signout',                 :to => 'sessions#destroy', :as => :signout
+  match '/auth/github/callback',    :to => 'sessions#create',  :provider => 'github'
+  match '/auth/failure' => redirect {|env, request|
+    request.flash[:error] = "Authentication error: #{request.params[:message].humanize}"
+    '/'
+  }
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
