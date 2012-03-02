@@ -1,10 +1,8 @@
 class Authentication < ActiveRecord::Base
   belongs_to :person
 
-  def self.person(credentials)
-    if auth = find_by_provider_and_uid(credentials['provider'], credentials['uid']) then
-      person = auth.person
-    else
+  def self.find_or_create_person(credentials)
+    unless person = find_person(credentials['provider'], credentials['uid']) then
       info = credentials['info']
       first_name, *_, last_name = info['name'].split.map(&:strip)
 
@@ -18,5 +16,10 @@ class Authentication < ActiveRecord::Base
     end
 
     person
+  end
+
+  def self.find_person(provider, uid)
+    auth = where(provider: provider, uid: uid).includes(:person).first
+    auth && auth.person
   end
 end

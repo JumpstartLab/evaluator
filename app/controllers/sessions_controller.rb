@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
 
   def create
     auth   = request.env['omniauth.auth']
-    person = Authentication.person(auth)
+    person = Authentication.find_or_create_person(auth)
     session[:user_id] = person.id
 
     redirect_to root_path, :notice => 'Logged in successfully'
