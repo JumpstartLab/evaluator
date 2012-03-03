@@ -1,4 +1,4 @@
-survey "Pre-Assessment for 3/8/12" do
+assessment "Pre-Assessment for 3/8/12" do
   section "Expectations" do
     question_1 "It's the first day. Sum up your feelings in one sentence"
     a :string
@@ -25,11 +25,11 @@ survey "Pre-Assessment for 3/8/12" do
     answer "No"
     answer "Never heard of them"
 
-    question_5 "How familiar with 'Extract, Translate, Load' (ETL) processes?", :pick => :one
+    question_5 "How familiar with 'Extract, Transform, Load' (ETL) processes?", :pick => :one
     answer "Say what?"
     answer "Somewhat Familiar"
     answer "I've written ETL systems"
-    answer "I Extract, Translate, and Load in my sleep."
+    answer "I Extract, Transform, and Load in my sleep."
 
     question_6 "Do you know how to define a method in Ruby?", :pick => :one
     answer_1 "Yes"

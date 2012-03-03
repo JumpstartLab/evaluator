@@ -1,4 +1,4 @@
-survey "Post-Assessment for 3/9/12" do
+assessment "Post-Assessment for 3/9/12" do
   section "Expectations" do
     question_1 "Briefly, how did the last two days live up to your expectations?"
     a :string

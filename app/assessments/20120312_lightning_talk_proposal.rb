@@ -1,4 +1,4 @@
-survey "Lightning Talk Plan for Week of 3/12/12" do
+assessment "Lightning Talk Plan for Week of 3/12/12" do
   question "What are you topic are you going to present on?"
   answer :text
 

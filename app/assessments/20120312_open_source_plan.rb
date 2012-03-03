@@ -1,4 +1,4 @@
-survey "Open Source Plan for Week of 3/12/12" do
+assessment "Open Source Plan for Week of 3/12/12" do
   question "What's the Github URL for the project you want to work on?"
   answer :string
 
