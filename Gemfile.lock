@@ -54,6 +54,12 @@ GEM
       rack (~> 1.1)
     formtastic (2.1.0)
       actionpack (~> 3.0)
+    haml (3.1.4)
+    haml-rails (0.3.4)
+      actionpack (~> 3.0)
+      activesupport (~> 3.0)
+      haml (~> 3.0)
+      railties (~> 3.0)
     hashie (1.2.0)
     hike (1.2.1)
     i18n (0.6.0)
@@ -148,6 +154,7 @@ DEPENDENCIES
   coffee-rails (~> 3.2.1)
   factory_girl_rails
   formtastic
+  haml-rails
   jquery-rails
   omniauth
   omniauth-github
