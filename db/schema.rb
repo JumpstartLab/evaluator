@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120304011916) do
+ActiveRecord::Schema.define(:version => 20120304214634) do
 
   create_table "answers", :force => true do |t|
     t.integer  "question_id",                      :null => false
@@ -45,18 +45,6 @@ ActiveRecord::Schema.define(:version => 20120304011916) do
 
   add_index "authentications", ["provider", "uid"], :name => "index_authentications_on_provider_and_uid"
 
-  create_table "evaluation_sections", :force => true do |t|
-    t.integer  "evaluation_id", :null => false
-    t.string   "title"
-    t.text     "description"
-    t.integer  "display_order"
-    t.text     "metadata"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
-  end
-
-  add_index "evaluation_sections", ["evaluation_id"], :name => "index_evaluation_sections_on_evaluation_id"
-
   create_table "evaluations", :force => true do |t|
     t.string   "title"
     t.text     "description"
@@ -83,17 +71,17 @@ ActiveRecord::Schema.define(:version => 20120304011916) do
   end
 
   create_table "questions", :force => true do |t|
-    t.integer  "evaluation_section_id",                    :null => false
+    t.integer  "section_id",                           :null => false
     t.text     "text"
     t.text     "help_text"
     t.string   "type"
     t.string   "pick"
     t.integer  "display_order"
-    t.boolean  "mandatory",             :default => false, :null => false
+    t.boolean  "mandatory",         :default => false, :null => false
     t.integer  "correct_answer_id"
     t.text     "metadata"
-    t.datetime "created_at",                               :null => false
-    t.datetime "updated_at",                               :null => false
+    t.datetime "created_at",                           :null => false
+    t.datetime "updated_at",                           :null => false
   end
 
   create_table "response_answers", :force => true do |t|
@@ -117,5 +105,17 @@ ActiveRecord::Schema.define(:version => 20120304011916) do
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
   end
+
+  create_table "sections", :force => true do |t|
+    t.integer  "evaluation_id", :null => false
+    t.string   "title"
+    t.text     "description"
+    t.integer  "display_order"
+    t.text     "metadata"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  add_index "sections", ["evaluation_id"], :name => "index_evaluation_sections_on_evaluation_id"
 
 end
