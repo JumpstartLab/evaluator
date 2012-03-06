@@ -1,2 +1,3 @@
-class EvaluationSection < ActiveRecord::Base
+class Section < ActiveRecord::Base
+  has_many :questions
 end

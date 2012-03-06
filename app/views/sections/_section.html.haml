@@ -1,0 +1,7 @@
+= content_tag_for(:div, section) do
+  %h3= section.title
+  = content_tag(:p, section.description) if section.description
+
+  .questions
+    = render partial: section.questions, as: :question, locals: {form: form}
+

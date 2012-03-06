@@ -1,0 +1,3 @@
+%p
+  = form.label :answer_id, option.text, value: option.id
+  = form.check_box :answer_id, {:multiple => true, 'data-exclusive' => true}, option.id, nil

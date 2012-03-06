@@ -1,0 +1,10 @@
+%ul
+  - evaluations.each do |evaluation|
+    %li
+      = evaluation.title
+      - if er = current_user.response_for(evaluation)
+        = "Taken #{time_ago_in_words(er.completed_at)} ago"
+      - else
+        = form_for EvaluationResponse.new(evaluation: evaluation) do |form|
+          = form.hidden_field :evaluation_id
+          = form.submit "Take Evaluation"

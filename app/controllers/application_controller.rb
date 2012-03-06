@@ -6,6 +6,16 @@ class ApplicationController < ActionController::Base
 
   before_filter :authentication_required
 
+  def self.resource_attr(*resources)
+    resources.each do |resource|
+      class_eval do
+        attr_accessor resource
+        helper_method resource
+        hide_action   resource
+      end
+    end
+  end
+
   private
 
   def current_user

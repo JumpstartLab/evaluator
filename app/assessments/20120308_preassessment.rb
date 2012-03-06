@@ -1,50 +1,77 @@
 assessment "Pre-Assessment for 3/8/12" do
   section "Expectations" do
-    question_1 "It's the first day. Sum up your feelings in one sentence"
-    a :string
+    question "It's the first day. Sum up your feelings in one sentence" do
+      free_response :string
+    end
 
-    question_2 "Where is your confidence going into today?", :pick => :one
-    answer "Extremely High"
-    answer "Solid"
-    answer "Uncertain"
-    answer "Doubting"
-    answer "Ready to Quit"
+    question "Where is your confidence going into today?" do
+      pick(:one) do
+        option "Extremely High"
+        option "Solid"
+        option "Uncertain"
+        option "Doubting"
+        option "Ready to Quit"
+      end
+    end
   end
 
   section "Technical" do
-    question_3 "How confident are you with Ruby Strings?", :pick => :one
-    answer "What's a string?"
-    answer "I know one or two manipulations"
-    answer "I can perform many manipulations like formatting, substrings"
-    answer "I can do most things on my own, refer to the API occasionally"
-    answer "I know it all"
+    question "How confident are you with Ruby Strings?" do
+      pick(:one) do
+        option "What's a string?"
+        option "I know one or two manipulations"
+        option "I can perform many manipulations like formatting, substrings"
+        option "I can do most things on my own, refer to the API occasionally"
+        option "I know it all"
+      end
+    end
 
-    question_4 "Do you know the difference between an Array and a Hash?", :pick => :one
-    answer "Yes, and I can explain it."
-    answer "Kinda"
-    answer "No"
-    answer "Never heard of them"
+    question "Do you know the difference between an Array and a Hash?" do
+      pick(:one) do
+        option "Yes, and I can explain it."
+        option "Kinda"
+        option "No"
+        option "Never heard of them"
+      end
+    end
 
-    question_5 "How familiar with 'Extract, Transform, Load' (ETL) processes?", :pick => :one
-    answer "Say what?"
-    answer "Somewhat Familiar"
-    answer "I've written ETL systems"
-    answer "I Extract, Transform, and Load in my sleep."
+    # question "Which Beatles do you like?" do
+    #   pick(:any) do
+    #     option "John"
+    #     option "Paul"
+    #     option "George"
+    #     option "Ringo"
+    #     option "Who are the Beatles?", exclusive: true
+    #   end
+    # end
 
-    question_6 "Do you know how to define a method in Ruby?", :pick => :one
-    answer_1 "Yes"
-    answer_2 "No"
+    question "How familiar with 'Extract, Transform, Load' (ETL) processes?" do
+      pick(:one) do
+        option "Say what?"
+        option "Somewhat Familiar"
+        option "I've written ETL systems"
+        option "I Extract, Transform, and Load in my sleep."
+      end
+    end
 
-    question_6a "Define a method named 'make_dinner' that takes a parameter quantity of guests. When the method is run, it prints the line 'Preparing dinner for X guests.' where 'X' is the parameter"
-    answer :text
-    dependency :rule => "A"
-    condition_A :question_6, "==", :answer_1
+    question "Do you know how to define a method in Ruby?", :name => "how_to_define" do
+      # pick_yes_or_no
+      pick(:one) do
+        option "Yes", :yes
+        option "No",  :no
+      end
+    end
 
-    question_7 "How do you know when a method needs to be refactored?"
-    answer :text
+    question "Define a method named 'make_dinner' that takes a parameter quantity of guests. When the method is run, it prints the line 'Preparing dinner for X guests.' where 'X' is the parameter" do
+      free_response :text
+      dependent do
+        condition question_name: "how_to_define", "==", :answer => :yes
+      end
+    end
 
-    question_8 "What's the maximum number of 'responsibilities' a method should have?"
-    answer :integer
+    question "How do you know when a method needs to be refactored?", free_response: :text
+
+    question "What's the maximum number of 'responsibilities' a method should have?", free_response: :integer
   end
 
 end

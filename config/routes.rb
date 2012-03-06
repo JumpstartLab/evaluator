@@ -5,9 +5,11 @@ Evaluator::Application.routes.draw do
 
   resources :evaluations
 
+  resources :evaluation_responses, except: :new, path: "responses"
+
   resources :people
 
-  resource :session, :only => [:new, :create, :destroy]
+  resource :session, only: [:new, :create, :destroy]
 
   match '/signin',                  :to => 'sessions#new',     :as => :signin
   match '/signout',                 :to => 'sessions#destroy', :as => :signout

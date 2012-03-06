@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120304220248) do
+ActiveRecord::Schema.define(:version => 20120307223123) do
 
   create_table "answers", :force => true do |t|
     t.integer  "question_id",                      :null => false
@@ -45,6 +45,17 @@ ActiveRecord::Schema.define(:version => 20120304220248) do
   end
 
   add_index "authentications", ["provider", "uid"], :name => "index_authentications_on_provider_and_uid"
+
+  create_table "evaluation_responses", :force => true do |t|
+    t.integer  "person_id"
+    t.integer  "evaluation_id"
+    t.string   "access_code"
+    t.datetime "started_at"
+    t.datetime "completed_at"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+    t.integer  "evaluator_id"
+  end
 
   create_table "evaluations", :force => true do |t|
     t.string   "title"
@@ -86,27 +97,16 @@ ActiveRecord::Schema.define(:version => 20120304220248) do
   end
 
   create_table "response_answers", :force => true do |t|
-    t.integer  "response_id"
+    t.integer  "evaluation_response_id"
     t.integer  "question_id"
     t.integer  "answer_id"
     t.text     "serialized_value"
     t.string   "unit"
-    t.datetime "created_at",       :null => false
-    t.datetime "updated_at",       :null => false
+    t.datetime "created_at",             :null => false
+    t.datetime "updated_at",             :null => false
   end
 
-  add_index "response_answers", ["response_id"], :name => "index_response_answers_on_response_id"
-
-  create_table "responses", :force => true do |t|
-    t.integer  "person_id"
-    t.integer  "evaluation_id"
-    t.string   "access_code"
-    t.datetime "started_at"
-    t.datetime "completed_at"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
-    t.integer  "evaluator_id"
-  end
+  add_index "response_answers", ["evaluation_response_id"], :name => "index_response_answers_on_response_id"
 
   create_table "sections", :force => true do |t|
     t.integer  "evaluation_id", :null => false
