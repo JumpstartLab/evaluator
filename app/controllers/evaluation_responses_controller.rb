@@ -4,7 +4,8 @@ class EvaluationResponsesController < ApplicationController
   before_filter :prevent_duplicate_responses, :only => :create
 
   def show
-    self.evaluation_response = EvaluationResponse.find_by_access_code(params[:id])
+    self.evaluation_response = current_user.responses.find_by_access_code(params[:id])
+    self.evaluation          = evaluation_response.evaluation
 
     respond_to do |format|
       format.html
@@ -30,7 +31,7 @@ class EvaluationResponsesController < ApplicationController
   end
 
   def update
-    evaluation_response = EvaluationResponse.find_by_access_code(params[:id])
+    evaluation_response = current_user.responses.find_by_access_code(params[:id])
     evaluation_response.attributes = params[:evaluation_response]
     evaluation_response.completed_at = Time.zone.now
     evaluation_response.save!
