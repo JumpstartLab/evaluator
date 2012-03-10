@@ -18,3 +18,10 @@ Please set up the following in /etc/hosts to support GitHub Oauth:
     127.0.0.1  reader.hungryacademy.local
 
 Please use port 3000 for this app.
+
+Importing an Evaluation
+=======================
+
+There is an example evaluation using the correct DSL available in `app/evaluations/20120308_preassessment.rb` for reference. Parse and import the evaluation by running:
+
+    [bundle exec] rake evaluator:parse_evaluation FILE=app/evaluations/20120308_preassessment.rb
