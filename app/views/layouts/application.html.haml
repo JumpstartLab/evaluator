@@ -9,6 +9,7 @@
   #navigation
     %ul
       - if signed_in?
+        %li= link_to "Home", root_path
         %li= link_to current_user.github_handle, person_path(current_user)
         %li= link_to "Sign out", signout_path
 
