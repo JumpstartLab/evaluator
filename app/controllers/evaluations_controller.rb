@@ -11,7 +11,7 @@ class EvaluationsController < ApplicationController
   end
 
   def show
-    self.evaluation = Evaluation.find_by_access_code(params[:id])
+    self.evaluation = Evaluation.find_by_access_code!(params[:id])
 
     respond_to do |format|
       format.html
