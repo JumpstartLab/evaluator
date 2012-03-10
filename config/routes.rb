@@ -11,6 +11,11 @@ Evaluator::Application.routes.draw do
 
   resource :session, only: [:new, :create, :destroy]
 
+  namespace :admin do
+    resources :evaluation_responses, only:  [:index, :show], path: "responses"
+  end
+  match '/admin',                   :to => redirect('/admin/responses')
+
   match '/signin',                  :to => 'sessions#new',     :as => :signin
   match '/signout',                 :to => 'sessions#destroy', :as => :signout
   match '/auth/github/callback',    :to => 'sessions#create',  :provider => 'github'

@@ -1,6 +1,0 @@
-%h2= evaluation.title
-%p#evaluation-description= evaluation.description
-
-= form_for(evaluation_response) do |form|
-  = render partial: evaluation.sections, locals: {form: form}
-  = form.submit "Submit Evaluation"

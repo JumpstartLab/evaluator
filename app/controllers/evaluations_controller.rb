@@ -19,14 +19,4 @@ class EvaluationsController < ApplicationController
     end
   end
 
-  def destroy
-    authorize! :manage, Evaluation
-    evaluation = Evaluation.find(params[:id])
-    evaluation.destroy
-
-    respond_to do |format|
-      format.html { redirect_to evaluations_url }
-      format.json { head :no_content }
-    end
-  end
 end

@@ -1,0 +1,5 @@
+= form.fields_for :answers, evaluation_response.answer_for(question) do |ff|
+  - if free_response.string?
+    = ff.text_field :value
+  - else
+    = ff.text_area :value
