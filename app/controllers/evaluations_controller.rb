@@ -20,6 +20,7 @@ class EvaluationsController < ApplicationController
   end
 
   def destroy
+    authorize! :manage, Evaluation
     evaluation = Evaluation.find(params[:id])
     evaluation.destroy
 
