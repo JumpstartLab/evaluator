@@ -1,4 +1,4 @@
-assessment "Pre-Assessment for 3/8/12" do
+evaluation "Pre-Assessment for 3/8/12" do
   section "Expectations" do
     question "It's the first day. Sum up your feelings in one sentence" do
       free_response :string
@@ -57,21 +57,25 @@ assessment "Pre-Assessment for 3/8/12" do
     question "Do you know how to define a method in Ruby?", :name => "how_to_define" do
       # pick_yes_or_no
       pick(:one) do
-        option "Yes", :yes
-        option "No",  :no
+        option "Yes", name: :yes
+        option "No",  name: :no
       end
     end
 
     question "Define a method named 'make_dinner' that takes a parameter quantity of guests. When the method is run, it prints the line 'Preparing dinner for X guests.' where 'X' is the parameter" do
       free_response :text
-      dependent do
-        condition question_name: "how_to_define", "==", :answer => :yes
+      dependency do
+        condition question_name: "how_to_define", when: "==", answer: :yes
       end
     end
 
-    question "How do you know when a method needs to be refactored?", free_response: :text
+    question "How do you know when a method needs to be refactored?" do 
+      free_response :text
+    end
 
-    question "What's the maximum number of 'responsibilities' a method should have?", free_response: :integer
+    question "What's the maximum number of 'responsibilities' a method should have?" do
+      free_response :integer
+    end
   end
 
 end

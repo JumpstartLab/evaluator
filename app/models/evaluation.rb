@@ -3,9 +3,9 @@ class Evaluation < ActiveRecord::Base
   belongs_to :evaluator, class_name: :Person
   belongs_to :assignment
 
-  has_many :sections
+  has_many :sections, dependent: :destroy
   has_many :questions, through: :sections
-  has_many :responses, class_name: :EvaluationResponse
+  has_many :responses, class_name: :EvaluationResponse, dependent: :destroy
   has_many :people, through: :responses
 
   after_initialize :set_access_code

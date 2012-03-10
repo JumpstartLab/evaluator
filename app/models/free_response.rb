@@ -1,5 +1,5 @@
 class FreeResponse < Answer
-  store :metadata, accessors: [:kind]
+  store :metadata, accessors: [:kind, :code]
 
   validates :kind, inclusion: [:string, :text, :integer, :float]
 
