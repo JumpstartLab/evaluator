@@ -11,6 +11,10 @@ class EvaluationResponse < ActiveRecord::Base
   after_initialize :set_access_code
   after_create :set_up_answers
 
+  def self.incomplete
+    where(completed_at: nil)
+  end
+
   def to_param
     access_code
   end

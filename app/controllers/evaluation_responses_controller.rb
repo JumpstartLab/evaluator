@@ -22,7 +22,7 @@ class EvaluationResponsesController < ApplicationController
   end
 
   def edit
-    self.evaluation_response = current_user.responses.find_by_access_code(params[:id])
+    self.evaluation_response = current_user.responses.incomplete.find_by_access_code(params[:id])
     self.evaluation = evaluation_response.evaluation
 
     respond_to do |format|
@@ -31,7 +31,7 @@ class EvaluationResponsesController < ApplicationController
   end
 
   def update
-    evaluation_response = current_user.responses.find_by_access_code(params[:id])
+    evaluation_response = current_user.responses.incomplete.find_by_access_code(params[:id])
     evaluation_response.attributes = params[:evaluation_response]
     evaluation_response.completed_at = Time.zone.now
     evaluation_response.save!
