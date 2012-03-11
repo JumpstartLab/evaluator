@@ -1,6 +1,6 @@
 assessment "Post-Assessment for 3/9/12" do
   section "Expectations" do
-    question_1 "Briefly, how did the last two days live up to your expectations?"
+    question_1 "Briefly, how did last week live up to your expectations?"
     a :string
 
     question_2 "Where is your confidence right now?", :pick => :one
