@@ -1,0 +1,46 @@
+html{
+  background: #CCC;
+}
+
+body{
+  width: 80%;
+  background: white;
+  border: 0px 2px solid #999;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+div.section{
+  margin: 10px 0px;
+  background: #EEE;
+  padding: 5px;
+
+  h3{
+    margin-left: 10px;
+  }
+}
+
+div.questions{
+  background: #FFF;
+  margin: 10px;
+  padding: 5px;
+
+  div{
+    padding: 20px 0px;
+    border-bottom: 1px dotted #CCC;
+
+    input[type="text"]{
+      display:block;
+      width: 400pt;
+    }
+
+    textarea{
+      display:block;
+      width: 400pt;
+    }
+
+    p{
+      margin-left: 20px;
+    }
+  }
+}
