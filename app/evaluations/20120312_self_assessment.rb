@@ -1,4 +1,4 @@
-assessment "Pre-Assessment for 3/12/12" do
+evaluation "Pre-Assessment for 3/12/12" do
   section "Expectations" do
     question "One week down, many to go. How are you feeling?" do
       free_response :string
@@ -25,6 +25,7 @@ assessment "Pre-Assessment for 3/12/12" do
         option "I didn't get it"
         option "Hated it"
       end
+    end
 
     question "What's something you're really curious about from last week?" do
       free_response :string
