@@ -2,7 +2,7 @@ class Authentication < ActiveRecord::Base
   belongs_to :person
 
   def self.find_or_create_person(credentials)
-    unless person = find_person(credentials['provider'], credentials['uid']) then
+    unless person = find_person(credentials['provider'], credentials['uid'].to_s) then
       info = credentials['info']
       first_name, *_, last_name = info['name'].split.map(&:strip)
 
@@ -11,7 +11,7 @@ class Authentication < ActiveRecord::Base
                                last_name:     last_name,
                                email:         info['email'],
                                github_handle: info['nickname'])
-        create(provider: credentials['provider'], uid: credentials['uid'], person: person)
+        create(provider: credentials['provider'], uid: credentials['uid'].to_s, person: person)
       end
     end
 
