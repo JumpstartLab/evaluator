@@ -4,7 +4,7 @@ class Authentication < ActiveRecord::Base
   def self.find_or_create_person(credentials)
     unless person = find_person(credentials['provider'], credentials['uid'].to_s) then
       info = credentials['info']
-      first_name, *_, last_name = info['name'].split.map(&:strip)
+      first_name, *_, last_name = info['name'].split.map(&:strip) if info['name'].present?
 
       transaction do
         person = Person.create(first_name:    first_name,
