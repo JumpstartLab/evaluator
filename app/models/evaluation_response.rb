@@ -15,6 +15,10 @@ class EvaluationResponse < ActiveRecord::Base
     where(completed_at: nil)
   end
 
+  def complete?
+    completed_at
+  end
+
   def to_param
     access_code
   end
