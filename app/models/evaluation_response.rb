@@ -15,6 +15,18 @@ class EvaluationResponse < ActiveRecord::Base
     where(completed_at: nil)
   end
 
+  def self.complete
+    where("#{table_name}.completed_at IS NOT NULL")
+  end
+
+  def self.in_response_to(evaluation)
+    where(evaluation_id: evaluation.id)
+  end
+
+  def self.completed_in_response_to(evaluation)
+    complete.in_response_to(evaluation)
+  end
+
   def complete?
     completed_at
   end
