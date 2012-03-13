@@ -6,6 +6,16 @@ class ApplicationController < ActionController::Base
 
   before_filter :authentication_required
 
+  rescue_from CanCan::AccessDenied do
+    flash.notice = "You don't have permission for that, sorry."
+    redirect_to root_path
+  end
+
+  rescue_from ActiveRecord::RecordNotFound do
+    flash.notice = "Sorry, couldn't find what you were looking for."
+    redirect_to root_path
+  end
+
   def self.resource_attr(*resources)
     resources.each do |resource|
       class_eval do

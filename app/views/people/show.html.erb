@@ -1,15 +1,22 @@
-<p id="notice"><%= notice %></p>
-
 <p>
   <b>First name:</b>
-  <%= @person.first_name %>
+  <%= person.first_name %>
 </p>
 
 <p>
   <b>Last name:</b>
-  <%= @person.last_name %>
+  <%= person.last_name %>
 </p>
 
+<p>
+  <b>Email:</b>
+  <%= person.email %>
+</p>
 
-<%= link_to 'Edit', edit_person_path(@person) %> |
-<%= link_to 'Back', people_path %>
+<p>
+  <b>GitHub handle:</b>
+  <%= person.github_handle %>
+</p>
+
+<%= link_to 'Edit', edit_person_path(person) %> |
+<%= link_to 'Home', root_path %>

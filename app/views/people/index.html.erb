@@ -1,4 +1,4 @@
-<h1>Listing people</h1>
+<h1>All Hungries</h1>
 
 <table>
   <tr>
@@ -9,17 +9,15 @@
     <th></th>
   </tr>
 
-<% @people.each do |person| %>
+<% people.each do |person| %>
   <tr>
     <td><%= person.first_name %></td>
     <td><%= person.last_name %></td>
+    <td><%= person.github_handle %></td>
     <td><%= link_to 'Show', person %></td>
     <td><%= link_to 'Edit', edit_person_path(person) %></td>
-    <td><%= link_to 'Destroy', person, confirm: 'Are you sure?', method: :delete %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
-
-<%= link_to 'New Person', new_person_path %>

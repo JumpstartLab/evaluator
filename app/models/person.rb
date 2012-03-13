@@ -3,6 +3,8 @@ class Person < ActiveRecord::Base
   has_many :assignments, :through => :evaluations
   has_many :responses, class_name: :EvaluationResponse
 
+  attr_accessible :first_name, :last_name, :email
+
   def response_for(evaluation)
     responses.in_response_to(evaluation).first
   end

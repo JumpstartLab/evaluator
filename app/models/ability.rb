@@ -7,6 +7,7 @@ class Ability
     else
       can :read, Evaluation
       can [:create, :update], EvaluationResponse
+      can [:show, :update], Person
     end
     # Define abilities for the passed in user here. For example:
     #

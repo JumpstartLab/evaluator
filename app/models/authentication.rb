@@ -7,10 +7,11 @@ class Authentication < ActiveRecord::Base
       first_name, *_, last_name = info['name'].split.map(&:strip) if info['name'].present?
 
       transaction do
-        person = Person.create(first_name:    first_name,
-                               last_name:     last_name,
-                               email:         info['email'],
-                               github_handle: info['nickname'])
+        person = Person.new(first_name:    first_name,
+                            last_name:     last_name,
+                            email:         info['email'])
+        person.github_handle = info['nickname']
+        person.save!
         create(provider: credentials['provider'], uid: credentials['uid'].to_s, person: person)
       end
     end

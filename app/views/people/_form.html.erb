@@ -1,10 +1,10 @@
-<%= form_for(@person) do |f| %>
-  <% if @person.errors.any? %>
+<%= form_for(person) do |f| %>
+  <% if person.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@person.errors.count, "error") %> prohibited this person from being saved:</h2>
+      <h2><%= pluralize(person.errors.count, "error") %> kept this save from happening:</h2>
 
       <ul>
-      <% @person.errors.full_messages.each do |msg| %>
+      <% person.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
       <% end %>
       </ul>
@@ -12,12 +12,20 @@
   <% end %>
 
   <div class="field">
+    <%= f.label :github_handle %><br />
+    <%= f.text_field :github_handle, disabled: :disabled %>
+  </div>
+  <div class="field">
     <%= f.label :first_name %><br />
     <%= f.text_field :first_name %>
   </div>
   <div class="field">
     <%= f.label :last_name %><br />
     <%= f.text_field :last_name %>
+  </div>
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.text_field :email %>
   </div>
   <div class="actions">
     <%= f.submit %>
