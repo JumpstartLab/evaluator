@@ -32,9 +32,7 @@ class EvaluationResponsesController < ApplicationController
 
   def update
     evaluation_response = current_user.responses.incomplete.find_by_access_code!(params[:id])
-    evaluation_response.attributes = params[:evaluation_response]
-    evaluation_response.completed_at = Time.zone.now
-    evaluation_response.save!
+    evaluation_response.submit(params[:evaluation_response])
 
     respond_to do |format|
       format.html { redirect_to evaluations_path }

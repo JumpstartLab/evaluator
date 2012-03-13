@@ -35,6 +35,13 @@ class EvaluationResponse < ActiveRecord::Base
     access_code
   end
 
+  def submit(attributes={})
+    return false if completed?
+
+    self.attributes = attributes.merge(submitted_at: Time.zone.now)
+    save
+  end
+
   def answer_for(question)
     answers.find {|a| a.question == question }
   end
