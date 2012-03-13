@@ -14,6 +14,8 @@ class Person < ActiveRecord::Base
   end
 
   def to_s
-    [last_name, first_name].join(', ')
+    full_name = [last_name, first_name].select{|name| name.present? }.join(', ')
+
+    full_name.empty? ? github_handle : full_name
   end
 end

@@ -1,6 +1,17 @@
 require 'spec_helper'
 
 describe Person do
+
+  describe "#to_s" do
+    context "when the person's first and last name are blank" do
+      it "is their GitHub handle" do
+        person = Person.new
+        person.github_handle = "foobar"
+        person.to_s.should eql("foobar")
+      end
+    end
+  end
+
   describe "#response_for" do
     let(:person)     { Factory(:person) }
 
