@@ -13,6 +13,10 @@ class Person < ActiveRecord::Base
     responses.completed_in_response_to(evaluation).first
   end
 
+  def to_param
+    github_handle
+  end
+
   def to_s
     full_name = [last_name, first_name].select{|name| name.present? }.join(', ')
 
