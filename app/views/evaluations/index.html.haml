@@ -5,7 +5,7 @@
       - if resp = current_user.response_for(evaluation)
         - if resp.completed?
           = "Ended #{time_ago_in_words(resp.completed_at)} ago"
-        - else
+        - elsif resp.submitted?
           = "Taken #{time_ago_in_words(resp.submitted_at)} ago"
         = link_to "View", evaluation_response_path(resp)
         - unless resp.completed?

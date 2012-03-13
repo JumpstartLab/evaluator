@@ -38,6 +38,10 @@ class EvaluationResponse < ActiveRecord::Base
     save
   end
 
+  def submitted?
+    submitted_at
+  end
+
   def completed?
     completed_at
   end
