@@ -27,10 +27,6 @@ class EvaluationResponse < ActiveRecord::Base
     complete.in_response_to(evaluation)
   end
 
-  def complete?
-    completed_at
-  end
-
   def to_param
     access_code
   end
@@ -41,6 +37,11 @@ class EvaluationResponse < ActiveRecord::Base
     self.attributes = attributes.merge(submitted_at: Time.zone.now)
     save
   end
+
+  def completed?
+    completed_at
+  end
+  alias :complete? :completed?
 
   def answer_for(question)
     answers.find {|a| a.question == question }

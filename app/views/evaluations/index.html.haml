@@ -2,9 +2,14 @@
   - evaluations.each do |evaluation|
     %li
       = evaluation.title
-      - if completed_response = current_user.completed_response_for(evaluation)
-        = "Taken #{time_ago_in_words(completed_response.completed_at)} ago"
-        = link_to "Click to view", evaluation_response_path(completed_response)
+      - if resp = current_user.response_for(evaluation)
+        - if resp.completed?
+          = "Ended #{time_ago_in_words(resp.completed_at)} ago"
+        - else
+          = "Taken #{time_ago_in_words(resp.submitted_at)} ago"
+        = link_to "View", evaluation_response_path(resp)
+        - unless resp.completed?
+          = link_to "Edit", edit_evaluation_response_path(resp)
       - else
         = form_for EvaluationResponse.new(evaluation: evaluation) do |form|
           = form.hidden_field :evaluation_id
