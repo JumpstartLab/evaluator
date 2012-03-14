@@ -1,10 +1,11 @@
 require 'securerandom'
 
 class EvaluationResponse < ActiveRecord::Base
-  belongs_to :person
-  belongs_to :evaluation, include: :questions
+  belongs_to :person,     inverse_of: :responses
+  belongs_to :evaluation, include:    :questions
 
-  has_many :answers, class_name: :ResponseAnswer, dependent: :destroy
+  has_many :answers,   class_name: :ResponseAnswer, dependent: :destroy
+  has_many :feedbacks, dependent: :destroy, inverse_of: :response
 
   accepts_nested_attributes_for :answers
 

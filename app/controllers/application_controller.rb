@@ -45,4 +45,8 @@ class ApplicationController < ActionController::Base
       redirect_to signin_path
     end
   end
+
+  def assert_can_manage
+    authorize! :manage, :all
+  end
 end

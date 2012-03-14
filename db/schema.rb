@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120313021702) do
+ActiveRecord::Schema.define(:version => 20120313195346) do
 
   create_table "answers", :force => true do |t|
     t.integer  "question_id",                      :null => false
@@ -73,6 +73,14 @@ ActiveRecord::Schema.define(:version => 20120313021702) do
   end
 
   add_index "evaluations", ["access_code"], :name => "index_evaluations_on_access_code"
+
+  create_table "feedbacks", :force => true do |t|
+    t.integer  "evaluator_id",           :null => false
+    t.integer  "evaluation_response_id", :null => false
+    t.text     "remarks",                :null => false
+    t.datetime "created_at",             :null => false
+    t.datetime "updated_at",             :null => false
+  end
 
   create_table "people", :force => true do |t|
     t.string   "first_name"

@@ -5,7 +5,9 @@ Evaluator::Application.routes.draw do
 
   resources :evaluations
 
-  resources :evaluation_responses, except: [:index, :new, :destroy], path: "responses"
+  resources :evaluation_responses, except: [:index, :new, :destroy], path: "responses" do
+    resources :feedbacks, only: :create
+  end
 
   resources :people
 

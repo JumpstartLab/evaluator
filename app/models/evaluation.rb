@@ -1,5 +1,5 @@
 class Evaluation < ActiveRecord::Base
-  belongs_to :person
+  belongs_to :person,    inverse_of: :evaluations
   belongs_to :evaluator, class_name: :Person
   belongs_to :assignment
 

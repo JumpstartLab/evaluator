@@ -1,11 +1,12 @@
 class EvaluationResponsesController < ApplicationController
-  resource_attr :evaluation, :evaluation_response
+  resource_attr :evaluation, :evaluation_response, :feedback
 
   before_filter :prevent_duplicate_responses, :only => :create
 
   def show
     self.evaluation_response = current_user.responses.find_by_access_code!(params[:id])
     self.evaluation          = evaluation_response.evaluation
+    self.feedback            = evaluation_response.feedbacks.build
 
     respond_to do |format|
       format.html

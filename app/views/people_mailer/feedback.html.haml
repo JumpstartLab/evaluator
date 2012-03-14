@@ -1,0 +1,8 @@
+%p= "Hi, #{@recipient_name}!"
+%p
+  = "#{@evaluator_name} has given feedback on"
+  %strong= "#{@feedback_target}."
+
+%p They said:
+
+= @remarks

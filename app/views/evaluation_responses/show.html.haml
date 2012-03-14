@@ -3,3 +3,16 @@
 
 = form_for(evaluation_response) do |form|
   = render partial: evaluation.sections, locals: {form: form}
+
+#feedback
+  %h2 Feedback
+  = render partial: evaluation_response.feedbacks.includes(:evaluator)
+  - if evaluation_response.feedbacks.count == 0
+    %p No feedback has been given
+
+  - if can? :manage, evaluation_response
+    = form_for feedback, url: evaluation_response_feedbacks_path(evaluation_response) do |form|
+      %p
+        = form.text_area :remarks
+      %p
+        = form.submit

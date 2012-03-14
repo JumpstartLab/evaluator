@@ -1,0 +1,3 @@
+= div_for feedback do
+  %h3= "#{feedback.evaluator.casual_name} said #{time_ago_in_words(feedback.created_at)} ago:"
+  = feedback.remarks
