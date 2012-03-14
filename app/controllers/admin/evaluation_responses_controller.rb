@@ -1,6 +1,6 @@
   module Admin
   class EvaluationResponsesController < ApplicationController
-    resource_attr :evaluation, :evaluation_response, :evaluation_responses
+    resource_attr :evaluation, :evaluation_response, :evaluation_responses, :feedback
 
     before_filter :require_admin
 
@@ -15,6 +15,7 @@
     def show
       self.evaluation_response = EvaluationResponse.find_by_access_code(params[:id])
       self.evaluation          = evaluation_response.evaluation
+      self.feedback            = evaluation_response.feedbacks.build
 
       respond_to do |format|
         format.html { render "evaluation_responses/show" }
