@@ -1,17 +1,17 @@
 require 'spec_helper'
 
 describe Feedback do
-  describe "#give" do
+  describe "#give_from" do
     let(:person)   { Factory(:person) }
     let(:response) { Factory(:evaluation_response) }
-    let(:feedback) { Feedback.new(remarks: "Awesome!", evaluator: person, response: response) }
+    let(:feedback) { response.feedbacks.build(remarks: "Awesome!") }
 
     it "saves the record" do
-      expect { feedback.give }.to change { Feedback.count }.by(1)
+      expect { feedback.give_from(person) }.to change { Feedback.count }.by(1)
     end
 
     it "sends a notice email" do
-      feedback.give
+      feedback.give_from(person)
       ActionMailer::Base.deliveries.should_not be_empty
     end
   end

@@ -6,9 +6,9 @@ class FeedbacksController < ApplicationController
 
   def create
     self.evaluation_response = EvaluationResponse.find_by_access_code(params[:evaluation_response_id])
-    self.feedback            = evaluation_response.feedbacks.create(params[:feedback].merge(evaluator: current_user))
+    self.feedback            = evaluation_response.feedbacks.build(params[:feedback])
 
-    if feedback.give
+    if feedback.give_from(current_user)
       flash.notice = "Feedback given"
       redirect_to evaluation_response_path(evaluation_response)
     else
