@@ -19,11 +19,13 @@ module Evaluator
   end
 
   class SectionParser
-    attr_reader :evaluation
+    attr_reader   :evaluation
+    attr_accessor :current_display_order
 
     def initialize(evaluation)
-      @evaluation = evaluation
-      @sections   = []
+      @evaluation            = evaluation
+      @sections              = []
+      @current_display_order = 1
     end
 
     def parse(&sections)
@@ -31,12 +33,13 @@ module Evaluator
     end
 
     def section(title, &questions)
-      section = Section.new(title: title)
+      section = Section.new(title: title, display_order: current_display_order)
 
       question_parser = QuestionParser.new(section)
       question_parser.parse(&questions)
 
       evaluation.sections << section
+      self.current_display_order += 1
     end
 
   end
