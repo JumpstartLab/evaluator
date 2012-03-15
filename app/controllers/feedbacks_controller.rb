@@ -9,7 +9,7 @@ class FeedbacksController < ApplicationController
     self.feedback            = evaluation_response.feedbacks.build(params[:feedback])
 
     if feedback.give_from(current_user)
-      flash.notice = "Feedback given"
+      flash.notice = "Feedback given to #{feedback.recipient} on #{feedback.target_title}"
       redirect_to admin_evaluation_responses_path
     else
       self.evaluation = evaluation_response.evaluation
