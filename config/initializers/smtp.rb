@@ -8,5 +8,11 @@ ActionMailer::Base.smtp_settings = {
   :enable_starttls_auto => true
 }
 
-ActionMailer::Base.default_url_options[:host] = "e.ha.local:3000"
-Mail.register_interceptor(DevelopmentMailInterceptor) if Rails.env.development?
+host = if Rails.env.development?
+  Mail.register_interceptor(DevelopmentMailInterceptor)
+  'e.ha.local:3000'
+else
+  'eval.jumpstartlab.com'
+end
+
+ActionMailer::Base.default_url_options[:host] = host
