@@ -1,5 +1,7 @@
 class Section < ActiveRecord::Base
   has_many :questions, dependent: :destroy
 
-  default_scope order("display_order ASC")
+  def self.in_order
+    order("display_order ASC")
+  end
 end
