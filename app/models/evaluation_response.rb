@@ -48,6 +48,10 @@ class EvaluationResponse < ActiveRecord::Base
   end
   alias :complete? :completed?
 
+  def belongs_to?(user)
+    person == user
+  end
+
   def answer_for(question)
     answers.find {|a| a.question == question }
   end
