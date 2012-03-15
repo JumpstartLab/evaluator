@@ -10,7 +10,7 @@ class FeedbacksController < ApplicationController
 
     if feedback.give_from(current_user)
       flash.notice = "Feedback given"
-      redirect_to evaluation_response_path(evaluation_response)
+      redirect_to admin_evaluation_responses_path
     else
       self.evaluation = evaluation_response.evaluation
       flash.notice = "There was an error giving your feedback"

@@ -1,8 +1,9 @@
-  module Admin
+module Admin
   class EvaluationResponsesController < ApplicationController
     resource_attr :evaluation, :evaluation_response, :evaluation_responses, :feedback
 
     before_filter :require_admin
+    before_filter :prepend_partial_prefix
 
     def index
       self.evaluation_responses = EvaluationResponse.order(:evaluation_id, :person_id).includes(:person)
@@ -26,6 +27,13 @@
 
     def require_admin
       authorize! :manage, :all
+    end
+
+    def prepend_partial_prefix
+      # By default, ActionView has some jank lookup and
+      # would not find 'feedbacks/_feedback.html.haml'.
+      # This may cause other, as-yet-unseen hurt.
+      lookup_context.prefixes.prepend ''
     end
 
   end
