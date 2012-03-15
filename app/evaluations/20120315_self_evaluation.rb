@@ -36,92 +36,44 @@ evaluation "Pre-Assessment for 3/15/12" do
   end
 
   section "Content" do
-    question "For today you read 'Hackers and Painters' - what did you think of it?" do
-      pick(:one) do
-        option "Life changing"
-        option "Thought provoking"
-        option "Decent"
-        option "Not quite a waste of time"
-        option "I didn't get it"
-        option "Hated it"
-      end
+    question "What's something you learned this week?" do
+      free_response :text
     end
 
-    question "What's something you're really curious about from last week?" do
-      free_response :string
+    question "What's something that's still confusing?" do
+      free_response :text
     end
   end
 
   section "Community" do
-    question "You've had a chance to meet your peers. Who are you most excited to work with?" do
-      free_response :string
-    end
-
-    question "Why?" do
+    question "How did you enjoy working with and around your peers this week?" do
       free_response :text
     end
 
-    question "What was your favorite activity from last week and why?" do
+    question "Did anyone have an exceptionally positive impact on you? Who/how?" do
       free_response :text
     end
 
-    question "What activity from last week did you find least valuable? Why?" do
-      free_response :text
-    end
-
-    question "Anything else you would have changed from last week?" do
+    question "Did anyone make you feel irritated, offended, or hurt? Who/when/how?" do
       free_response :text
     end    
   end
 
-  section "Technical" do
-    question "Have you completed a working JSTwitter implementation?" do
-      pick(:one) do
-        option "Yes"
-        option "Partly"
-        option "No"
-      end
-    end
-
-    question "What kind of data are better represented by hashes than arrays?" do
-      free_response :string
-    end
-
-    question "Define a method named 'titleify' that takes a parameter string and returns that string with the first letter of each word capitalized:" do
+  section "Effort & Work" do
+    question "What did you do well this week?" do
       free_response :text
     end
 
-    question "Do you know how to implement a 'command prompt'-like menu system?" do
-      pick(:one) do
-        option "Yes"
-        option "Partly"
-        option "No"
-      end
+    question "What could you have done better?" do
+      free_response :text
     end
 
-    question "Can you write a method that mimics named parameters?" do
-      pick(:one) do
-        option "Yes"
-        option "Partly"
-        option "No"
-      end
-    end
-    
-
-    question "Can you write a method with a default/optional parameter?" do
-      pick(:one) do
-        option "Yes"
-        option "Partly"
-        option "No"
-      end
+    question "What did Jeff/Matt do well this week?" do
+      free_response :text
     end
 
-    question "Can you write a method that executes a block?" do
-      pick(:one) do
-        option "Yes"
-        option "Partly"
-        option "No"
-      end
+    question "What could Jeff/Matt have done better?" do
+      free_response :text
     end
   end
 end
