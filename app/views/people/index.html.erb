@@ -4,6 +4,8 @@
   <tr>
     <th>First name</th>
     <th>Last name</th>
+    <th>GitHub handle</th>
+    <th>Email</th>
     <th></th>
     <th></th>
     <th></th>
@@ -14,6 +16,7 @@
     <td><%= person.first_name %></td>
     <td><%= person.last_name %></td>
     <td><%= person.github_handle %></td>
+    <td><%= person.email %></td>
     <td><%= link_to 'Show', person %></td>
     <td><%= link_to 'Edit', edit_person_path(person) %></td>
   </tr>
