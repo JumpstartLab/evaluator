@@ -2,7 +2,7 @@ class EvaluationsController < ApplicationController
   resource_attr :evaluation, :evaluations
 
   def index
-    self.evaluations = Evaluation.all
+    self.evaluations = Evaluation.non_instructor
 
     respond_to do |format|
       format.html

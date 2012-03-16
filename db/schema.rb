@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120315173335) do
+ActiveRecord::Schema.define(:version => 20120316123813) do
 
   create_table "answers", :force => true do |t|
     t.integer  "question_id",                      :null => false
@@ -63,14 +63,15 @@ ActiveRecord::Schema.define(:version => 20120315173335) do
     t.text     "description"
     t.integer  "assignment_id"
     t.integer  "person_id"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.datetime "created_at",                       :null => false
+    t.datetime "updated_at",                       :null => false
     t.string   "access_code"
     t.datetime "open_at"
     t.datetime "close_at"
     t.integer  "display_order"
     t.text     "metadata"
     t.boolean  "peer"
+    t.boolean  "instructor",    :default => false
   end
 
   add_index "evaluations", ["access_code"], :name => "index_evaluations_on_access_code"

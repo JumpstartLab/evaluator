@@ -6,8 +6,12 @@ class Person < ActiveRecord::Base
 
   attr_accessible :first_name, :last_name, :email
 
+  def self.instructors
+    scoped.select {|person| Evaluator::ADMINS.include?(person.github_handle) }
+  end
+
   def self.students
-    scoped.select {|person| !Evaluator::ADMINS.include?(person.github_handle) }
+    scoped.select {|person| Evaluator::STUDENTS.include?(person.github_handle) }
   end
 
   def self.student_handles_and_ids

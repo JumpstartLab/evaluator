@@ -25,6 +25,21 @@ module Evaluator
       evaluation.save!
     end
 
+    def instructor_evaluation(title, metadata={}, &sections)
+      evaluation = Evaluation.new(title: title, metadata: metadata, peer: true, instructor: true)
+
+      section_parser = SectionParser.new(evaluation)
+      section_parser.parse(&sections)
+
+      evaluation.save!
+
+      Person.instructors.each do |instructor|
+        Person.students.each do |student|
+          evaluation.responses.create(started_at: Time.zone.now, evaluator: instructor, evaluatee: student)
+        end
+      end
+    end
+
   end
 
   class SectionParser

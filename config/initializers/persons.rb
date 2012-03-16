@@ -26,4 +26,6 @@ module Evaluator
             adigitalnative
             verdi327
             JanKoszewski)
+
+  STUDENTS = PEOPLE - ADMINS
 end

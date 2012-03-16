@@ -10,6 +10,10 @@ class Evaluation < ActiveRecord::Base
 
   after_initialize :set_access_code
 
+  def self.non_instructor
+    where(instructor: false)
+  end
+
   def to_param
     access_code
   end
