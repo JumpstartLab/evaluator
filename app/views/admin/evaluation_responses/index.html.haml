@@ -3,6 +3,6 @@
     %li
       = Evaluation.find(evaluation_id).title
       %ul
-        - responses.each do |resp|
+        - responses.sort_by{|r| r.evaluator.last_name }.each do |resp|
           - link_text = "#{resp.evaluator}#{" - for " + resp.evaluatee.to_s if resp.for_peer?}"
           %li= link_to link_text, admin_evaluation_response_path(resp)
