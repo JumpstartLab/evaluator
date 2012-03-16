@@ -16,6 +16,15 @@ module Evaluator
       evaluation.save!
     end
 
+    def peer_evaluation(title, metadata={}, &sections)
+      evaluation = Evaluation.new(title: title, metadata: metadata, peer: true)
+
+      section_parser = SectionParser.new(evaluation)
+      section_parser.parse(&sections)
+
+      evaluation.save!
+    end
+
   end
 
   class SectionParser

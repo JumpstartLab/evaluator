@@ -1,10 +1,18 @@
 class Person < ActiveRecord::Base
   has_many :evaluations, inverse_of: :person
   has_many :assignments, through:     :evaluations
-  has_many :responses,   class_name: :EvaluationResponse
+  has_many :responses,   class_name: :EvaluationResponse, foreign_key: :evaluator_id
   has_many :feedbacks,   inverse_of: :evaluator
 
   attr_accessible :first_name, :last_name, :email
+
+  def self.students
+    scoped.select {|person| !Evaluator::ADMINS.include?(person.github_handle) }
+  end
+
+  def self.student_handles_and_ids
+    students.map {|s| [s.github_handle, s.id] }
+  end
 
   def response_for(evaluation)
     responses.in_response_to(evaluation).first

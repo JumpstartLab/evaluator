@@ -1,7 +1,8 @@
 require 'securerandom'
 
 class EvaluationResponse < ActiveRecord::Base
-  belongs_to :person,     inverse_of: :responses
+  belongs_to :evaluator,  inverse_of: :responses, class_name: :Person
+  belongs_to :evaluatee,                          class_name: :Person
   belongs_to :evaluation, include:    :questions
 
   has_many :answers,   class_name: :ResponseAnswer, dependent: :destroy
@@ -49,7 +50,16 @@ class EvaluationResponse < ActiveRecord::Base
   alias :complete? :completed?
 
   def belongs_to?(user)
-    person == user
+    evaluator == user
+  end
+
+  def for_peer?
+    evaluator_id != evaluatee_id
+  end
+  alias :peer? :for_peer?
+
+  def peer
+    evaluatee if for_peer?
   end
 
   def answer_for(question)

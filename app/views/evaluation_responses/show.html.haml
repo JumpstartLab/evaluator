@@ -1,9 +1,11 @@
 %h2
   = evaluation.title
+  - if evaluation_response.for_peer?
+    = "for #{evaluation_response.peer}"
   - if evaluation_response.belongs_to?(current_user)
     = link_to "Change My Responses", edit_evaluation_response_path(evaluation_response)
   - else
-    = "for #{evaluation_response.person}"
+    = "by #{evaluation_response.evaluator}"
 %p#evaluation-description= evaluation.description
 
 = form_for(evaluation_response) do |form|

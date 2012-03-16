@@ -18,6 +18,6 @@ class Feedback < ActiveRecord::Base
   end
 
   def recipient
-    response.person
+    response.evaluator
   end
 end

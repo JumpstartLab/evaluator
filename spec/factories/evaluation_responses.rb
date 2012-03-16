@@ -4,7 +4,7 @@ require 'securerandom'
 FactoryGirl.define do
   factory :evaluation_response do
     evaluation
-    person
+    association :evaluator, factory: :person
     access_code SecureRandom.hex
     started_at 1.day.ago
     submitted_at nil

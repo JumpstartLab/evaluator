@@ -1,4 +1,7 @@
-%h2= evaluation.title
+%h2
+  = evaluation.title
+  - if evaluation_response.for_peer?
+    = "for #{evaluation_response.peer}"
 %p#evaluation-description= evaluation.description
 
 = form_for(evaluation_response) do |form|

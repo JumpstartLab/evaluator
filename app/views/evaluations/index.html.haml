@@ -14,3 +14,5 @@
         = form_for EvaluationResponse.new(evaluation: evaluation) do |form|
           = form.hidden_field :evaluation_id
           = form.submit "Take Evaluation"
+          - if evaluation.peer?
+            = form.select :evaluatee_id, Person.student_handles_and_ids

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120313195346) do
+ActiveRecord::Schema.define(:version => 20120315173335) do
 
   create_table "answers", :force => true do |t|
     t.integer  "question_id",                      :null => false
@@ -47,7 +47,7 @@ ActiveRecord::Schema.define(:version => 20120313195346) do
   add_index "authentications", ["provider", "uid"], :name => "index_authentications_on_provider_and_uid"
 
   create_table "evaluation_responses", :force => true do |t|
-    t.integer  "person_id"
+    t.integer  "evaluatee_id"
     t.integer  "evaluation_id"
     t.string   "access_code"
     t.datetime "started_at"
@@ -70,6 +70,7 @@ ActiveRecord::Schema.define(:version => 20120313195346) do
     t.datetime "close_at"
     t.integer  "display_order"
     t.text     "metadata"
+    t.boolean  "peer"
   end
 
   add_index "evaluations", ["access_code"], :name => "index_evaluations_on_access_code"
