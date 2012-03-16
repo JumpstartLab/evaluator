@@ -9,6 +9,8 @@
   #navigation
     %ul
       - if signed_in?
+        - if Person.instructor?(current_user)
+          %li= link_to "Admin", admin_path
         %li= link_to "Home", root_path
         %li= link_to current_user.github_handle, edit_person_path(current_user)
         %li= link_to "Sign out", signout_path

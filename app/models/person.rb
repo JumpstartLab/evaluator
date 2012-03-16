@@ -18,6 +18,10 @@ class Person < ActiveRecord::Base
     students.map {|s| [s.github_handle, s.id] }
   end
 
+  def self.instructor?(person)
+    Evaluator::ADMINS.include?(person.github_handle)
+  end
+
   def response_for(evaluation)
     responses.in_response_to(evaluation).first
   end
