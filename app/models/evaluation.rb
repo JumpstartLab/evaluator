@@ -14,6 +14,10 @@ class Evaluation < ActiveRecord::Base
     access_code
   end
 
+  def sections_in_order
+    sections.in_order
+  end
+
   private
 
   def set_access_code
