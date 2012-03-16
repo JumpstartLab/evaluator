@@ -1,4 +1,4 @@
-evaluation "Lightning Talk Assessment" do
+instructor_evaluation "Lightning Talk Assessment" do
   section "Basics" do
     question "Whose talk are you assessing?" do
       free_response :string
