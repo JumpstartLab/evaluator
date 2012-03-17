@@ -3,18 +3,18 @@ require 'spec_helper'
 describe Authentication do
   describe ".find_or_create_person" do
     context "when the person has authenticated previously" do
-      let!(:auth)   { Factory(:authentication, provider: 'github', uid: 'abc123') }
+      let!(:auth)   { Factory(:authentication, provider: 'github', uid: 'octocat') }
       let(:person)  { auth.person }
 
       it "finds that person by provider credentials" do
-        creds = {'provider' => 'github', 'uid' => 'abc123'}
+        creds = {'provider' => 'github', 'uid' => 'octocat'}
         Authentication.find_or_create_person(creds).should == person
       end
     end
 
     context "when the person has never authenticated" do
       let(:creds) do
-        {'provider' => 'github', 'uid' => 'abc123', 'info' => {'name' => 'Octo Cat'}}
+        {'provider' => 'github', 'uid' => 'octocat', 'info' => {'name' => 'Octo Cat', 'nickname' => 'octocat'}}
       end
 
       it "creates a person record for them using info" do

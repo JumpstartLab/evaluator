@@ -6,6 +6,8 @@ class Person < ActiveRecord::Base
 
   attr_accessible :first_name, :last_name, :email
 
+  validates :github_handle, inclusion: Evaluator::PEOPLE
+
   def self.instructors
     scoped.select {|person| Evaluator::ADMINS.include?(person.github_handle) }
   end

@@ -1,0 +1,3 @@
+(Evaluator::PEOPLE << "jdoe") << "octocat"
+
+

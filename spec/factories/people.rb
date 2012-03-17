@@ -4,12 +4,12 @@ FactoryGirl.define do
     last_name "Doe"
     email "john@hungryacademy.com"
     github_handle "jdoe"
-  end
 
-  factory :octocat do
-    first_name "Octo"
-    last_name "Cat"
-    email "octocat@hungryacademy.com"
-    github_handle "octocat"
+    factory :octocat do
+      first_name "Octo"
+      last_name "Cat"
+      email "octocat@hungryacademy.com"
+      github_handle "octocat"
+    end
   end
 end
