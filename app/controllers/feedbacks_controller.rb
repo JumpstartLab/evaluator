@@ -5,7 +5,7 @@ class FeedbacksController < ApplicationController
   before_filter :assert_can_manage
 
   def create
-    self.evaluation_response = EvaluationResponse.find_by_access_code(params[:evaluation_response_id])
+    self.evaluation_response = EvaluationResponse.find_by_access_code!(params[:evaluation_response_id])
     self.feedback            = evaluation_response.feedbacks.build(params[:feedback])
 
     if feedback.give_from(current_user)

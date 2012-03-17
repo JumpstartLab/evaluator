@@ -14,7 +14,7 @@ module Admin
     end
 
     def show
-      self.evaluation_response = EvaluationResponse.find_by_access_code(params[:id])
+      self.evaluation_response = EvaluationResponse.find_by_access_code!(params[:id])
       self.evaluation          = evaluation_response.evaluation
       self.feedback            = evaluation_response.feedbacks.build
 
