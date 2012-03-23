@@ -31,7 +31,7 @@ module Evaluator
       section_parser = Evaluator::Parser::SectionBody.new(evaluation)
       section_parser.parse(&sections)
 
-      Person.groups.each do |instructor, students|
+      Person.each_group do |instructor, students|
         students.each do |student|
           evaluation.responses.build(started_at: Time.zone.now, evaluator: instructor, evaluatee: student)
         end

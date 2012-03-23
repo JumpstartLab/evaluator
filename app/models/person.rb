@@ -8,9 +8,9 @@ class Person < ActiveRecord::Base
 
   validates :github_handle, inclusion: Evaluator::PEOPLE
 
-  def self.groups(&block)
+  def self.each_group(&block)
     instructors.each do |instructor|
-      block.call(instructor, students_for(instructor))
+      block.call(instructor, students_for(instructor)) if block
     end
   end
 
