@@ -8,12 +8,24 @@ class Person < ActiveRecord::Base
 
   validates :github_handle, inclusion: Evaluator::PEOPLE
 
+  def self.groups(&block)
+    instructors.each do |instructor|
+      block.call(instructor, students_for(instructor))
+    end
+  end
+
   def self.instructors
     scoped.select {|person| Evaluator::ADMINS.include?(person.github_handle) }
   end
 
   def self.students
     scoped.select {|person| Evaluator::STUDENTS.include?(person.github_handle) }
+  end
+
+  def self.students_for(instructor)
+    students.select do |student|
+      Evaluator::GROUPS[instructor.github_handle].include?(student.github_handle)
+    end
   end
 
   def self.student_handles_and_ids
