@@ -19,7 +19,7 @@ module Evaluator
     def peer_evaluation(title, metadata={}, &sections)
       evaluation = Evaluation.new(title: title, metadata: metadata, peer: true)
 
-      section_parser =Evaluator::Parser::SectionParser.new(evaluation)
+      section_parser =Evaluator::Parser::SectionBody.new(evaluation)
       section_parser.parse(&sections)
 
       evaluation
@@ -28,7 +28,7 @@ module Evaluator
     def instructor_evaluation(title, metadata={}, &sections)
       evaluation = Evaluation.new(title: title, metadata: metadata, peer: true, instructor: true)
 
-      section_parser = Evaluator::Parser::SectionParser.new(evaluation)
+      section_parser = Evaluator::Parser::SectionBody.new(evaluation)
       section_parser.parse(&sections)
 
       Person.groups.each do |instructor, students|
