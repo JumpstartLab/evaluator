@@ -35,11 +35,13 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'factory_girl_rails'
   #gem 'ruby-debug19', :require => 'ruby-debug'
+
+  gem 'capybara'
+  gem 'capybara-webkit'
 end
 
 group :integration do
-  gem 'capybara'
-  gem 'capybara-webkit'
+
 end
 
 group :guard do
