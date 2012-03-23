@@ -34,6 +34,19 @@ group :development, :test do
   gem 'sqlite3'
   gem 'rspec-rails'
   gem 'factory_girl_rails'
+  #gem 'ruby-debug19', :require => 'ruby-debug'
+end
+
+group :integration do
+  gem 'capybara'
+  gem 'capybara-webkit'
+end
+
+group :guard do
+  gem 'guard'
+  gem 'guard-rspec'
+  #gem 'fsevent'
+  gem 'growl'
 end
 
 # To use ActiveModel has_secure_password
@@ -48,5 +61,3 @@ end
 # Deploy with Capistrano
 # gem 'capistrano'
 
-# To use debugger
-# gem 'ruby-debug19', :require => 'ruby-debug'
