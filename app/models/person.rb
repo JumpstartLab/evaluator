@@ -61,4 +61,8 @@ class Person < ActiveRecord::Base
   def full_name
     [first_name, last_name].select(&:present?).join(' ')
   end
+
+  def to_recipient
+    "\"#{full_name}\" <#{email}>"
+  end
 end
