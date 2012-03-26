@@ -6,3 +6,9 @@
         - responses.sort_by{|r| r.evaluator.last_name }.each do |resp|
           - link_text = "#{resp.evaluator}#{" - for " + resp.evaluatee.to_s if resp.for_peer?}"
           %li= link_to link_text, admin_evaluation_response_path(resp)
+
+%ul
+  - Person.each_group do |instructor, students|
+    %li
+      = "#{instructor.casual_name}'s Group"
+      .recipients= students.map(&:to_recipient).join(', ')

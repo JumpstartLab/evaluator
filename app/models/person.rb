@@ -8,12 +8,24 @@ class Person < ActiveRecord::Base
 
   validates :github_handle, inclusion: Evaluator::PEOPLE
 
+  def self.each_group(&block)
+    instructors.each do |instructor|
+      block.call(instructor, students_for(instructor)) if block
+    end
+  end
+
   def self.instructors
     scoped.select {|person| Evaluator::ADMINS.include?(person.github_handle) }
   end
 
   def self.students
     scoped.select {|person| Evaluator::STUDENTS.include?(person.github_handle) }
+  end
+
+  def self.students_for(instructor)
+    students.select do |student|
+      Evaluator::GROUPS[instructor.github_handle].include?(student.github_handle)
+    end
   end
 
   def self.student_handles_and_ids
@@ -48,5 +60,9 @@ class Person < ActiveRecord::Base
 
   def full_name
     [first_name, last_name].select(&:present?).join(' ')
+  end
+
+  def to_recipient
+    "\"#{full_name}\" <#{email}>"
   end
 end

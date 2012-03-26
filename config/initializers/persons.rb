@@ -28,4 +28,33 @@ module Evaluator
             JanKoszewski)
 
   STUDENTS = PEOPLE - ADMINS
+
+  GROUPS = {'jcasimir' => %w(
+            marktabler
+            worace
+            nisargshah100
+            dkaufman
+            maryelizbeth
+            eliseworthy
+            darrellrivera
+            austenito
+            eweng
+            tkiefhaber
+            travisvalentine
+            verdi327
+            ),
+
+            'mattyoho' => %w(
+            cstrahan
+            chrismanderson
+            MikeSilvis
+            tyre
+            athal7
+            conanr
+            mrgilman
+            mikesea
+            1337807
+            Andrewglass1
+            adigitalnative
+            JanKoszewski)}
 end

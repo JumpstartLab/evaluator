@@ -38,16 +38,9 @@ group :development, :test do
 
   gem 'capybara'
   gem 'capybara-webkit'
-end
 
-group :integration do
-
-end
-
-group :guard do
   gem 'guard'
   gem 'guard-rspec'
-  #gem 'fsevent'
   gem 'growl'
 end
 
