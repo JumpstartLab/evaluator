@@ -48,7 +48,7 @@ module Evaluator
 
       instructor = Person.instructors.find {|ins| ins.github_handle == instructor_handle }
       Person.students_for(instructor).each do |student|
-        evaluation.responses.build(started_at: Time.zone.now, evaluator: instructor, evaluatee: student)
+        evaluation.responses.build(started_at: Time.zone.now, evaluator: student, evaluatee: student)
       end
 
       evaluation
