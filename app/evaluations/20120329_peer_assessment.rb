@@ -35,17 +35,6 @@ evaluation "Peer Assessment for SalesEngine" do
     end
   end
 
-  section "Performance" do
-    question "What score did they earn for performance? (0-3 only)" do
-      free_response :integer
-    end
-
-    question "Notes" do
-      free_response :text
-    end
-  end
-
-
   section "Live Hungry" do
     question "What score did they earn for effort? (0-5 only)" do
       free_response :integer
