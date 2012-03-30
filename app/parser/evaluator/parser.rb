@@ -54,6 +54,22 @@ module Evaluator
       evaluation
     end
 
+    def lightning_talk_evaluation(instructor_handle, title, metadata={}, &sections)
+      evaluation = Evaluation.new(title: title, metadata: metadata, peer: true, instructor: true)
+
+      section_parser = Evaluator::Parser::SectionBody.new(evaluation)
+      section_parser.parse(&sections)
+
+      group_instructor = Person.instructors.find {|ins| ins.github_handle == instructor_handle }
+      Person.instructors.each do |instructor|
+        Person.students_for(group_instructor).each do |student|
+          evaluation.responses.build(started_at: Time.zone.now, evaluator: instructor, evaluatee: student)
+        end
+      end
+
+      evaluation
+    end
+
   end
 
 end
