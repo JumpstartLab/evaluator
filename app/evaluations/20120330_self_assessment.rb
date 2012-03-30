@@ -20,14 +20,14 @@ evaluation "Self-Assessment for 3/30/12" do
       free_response :text
     end
 
-    question "In retrospect, what  change about your approach to pairing, testing, or the project itself?" do
+    question "In retrospect, what change about your approach to pairing, testing, or the project itself?" do
       free_response :string
     end
   end
 
   section "Other Work" do
     question "Have you started reading Drive? What have you taken away so far?" do
-      free_response :string
+      free_response :text
     end
   end
 
