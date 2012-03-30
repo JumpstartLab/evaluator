@@ -1,5 +1,5 @@
 %ul
-  - evaluation_responses.group_by(&:evaluation_id).each do |evaluation_id, responses|
+  - evaluation_responses.group_by(&:evaluation_id).reverse_each do |evaluation_id, responses|
     %li
       = Evaluation.find(evaluation_id).title
       %ul
