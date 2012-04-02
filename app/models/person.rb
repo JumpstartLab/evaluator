@@ -18,6 +18,10 @@ class Person < ActiveRecord::Base
     scoped.select {|person| Evaluator::ADMINS.include?(person.github_handle) }
   end
 
+  def self.instructor_by_github_handle(handle)
+    instructors.find {|instructor| instructor.github_handle == handle }
+  end
+
   def self.students
     scoped.select {|person| Evaluator::STUDENTS.include?(person.github_handle) }
   end

@@ -7,29 +7,16 @@ module Evaluator
       end
     end
 
-    def evaluation(title, metadata={}, &sections)
-      evaluation = Evaluation.new(title: title, metadata: metadata)
-
-      section_parser = Evaluator::Parser::SectionBody.new(evaluation)
-      section_parser.parse(&sections)
-
-      evaluation
+    def evaluation(title, metadata={}, &body)
+      build_evaluation(title: title, metadata: metadata, &body)
     end
 
-    def peer_evaluation(title, metadata={}, &sections)
-      evaluation = Evaluation.new(title: title, metadata: metadata, peer: true)
-
-      section_parser =Evaluator::Parser::SectionBody.new(evaluation)
-      section_parser.parse(&sections)
-
-      evaluation
+    def peer_evaluation(title, metadata={}, &body)
+      build_evaluation(title: title, metadata: metadata, peer: true, &body)
     end
 
-    def instructor_evaluation(title, metadata={}, &sections)
-      evaluation = Evaluation.new(title: title, metadata: metadata, peer: true, instructor: true)
-
-      section_parser = Evaluator::Parser::SectionBody.new(evaluation)
-      section_parser.parse(&sections)
+    def instructor_evaluation(title, metadata={}, &body)
+      evaluation = build_evaluation(title: title, metadata: metadata, peer: true, instructor: true, &body)
 
       Person.each_group do |instructor, students|
         students.each do |student|
@@ -40,13 +27,10 @@ module Evaluator
       evaluation
     end
 
-    def lightning_talk(instructor_handle, title, metadata={}, &sections)
-      evaluation = Evaluation.new(title: title, metadata: metadata)
+    def lightning_talk_proposal(instructor_handle, title, metadata={}, &body)
+      evaluation = build_evaluation(title: title, metadata: metadata, &body)
 
-      section_parser = Evaluator::Parser::SectionBody.new(evaluation)
-      section_parser.parse(&sections)
-
-      instructor = Person.instructors.find {|ins| ins.github_handle == instructor_handle }
+      instructor = Person.instructor_by_github_handle(instructor_handle)
       Person.students_for(instructor).each do |student|
         evaluation.responses.build(started_at: Time.zone.now, evaluator: student, evaluatee: student)
       end
@@ -54,18 +38,24 @@ module Evaluator
       evaluation
     end
 
-    def lightning_talk_evaluation(instructor_handle, title, metadata={}, &sections)
-      evaluation = Evaluation.new(title: title, metadata: metadata, peer: true, instructor: true)
+    def lightning_talk_evaluation(instructor_handle, title, metadata={}, &body)
+      evaluation = build_evaluation(title: title, metadata: metadata, peer: true, instructor: true, &body)
 
-      section_parser = Evaluator::Parser::SectionBody.new(evaluation)
-      section_parser.parse(&sections)
-
-      group_instructor = Person.instructors.find {|ins| ins.github_handle == instructor_handle }
+      group_instructor = Person.instructor_by_github_handle(instructor_handle)
       Person.instructors.each do |instructor|
         Person.students_for(group_instructor).each do |student|
           evaluation.responses.build(started_at: Time.zone.now, evaluator: instructor, evaluatee: student)
         end
       end
+
+      evaluation
+    end
+
+    def build_evaluation(eval_attributes, &body)
+      evaluation = Evaluation.new(eval_attributes)
+
+      body_parser = Evaluator::Parser::EvaluationBody.new(evaluation)
+      body_parser.parse(&body)
 
       evaluation
     end

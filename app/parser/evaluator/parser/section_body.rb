@@ -1,27 +1,57 @@
 module Evaluator
   class Parser
     class SectionBody
-      attr_reader   :evaluation
-      attr_accessor :current_display_order
+      include IncrementingDisplayOrder
 
-      def initialize(evaluation)
-        @evaluation            = evaluation
-        @sections              = []
-        @current_display_order = 1
+      def initialize(section)
+        @section = section
       end
 
-      def parse(&sections)
-        instance_eval(&sections)
+      def parse(&body)
+        instance_eval(&body)
       end
 
-      def section(title, &questions)
-        section = Section.new(title: title, display_order: current_display_order)
+      def free_response(text, metadata={}, &details)
+        kind = metadata.delete(:kind)
 
-        question_parser = Evaluator::Parser::QuestionBody.new(section)
-        question_parser.parse(&questions)
+        fill_in  = incrementing_display_order do |order|
+          FillIn.new(text:          text,
+                     metadata:      metadata,
+                     display_order: order)
+        end
 
-        evaluation.sections << section
-        self.current_display_order += 1
+        details_parser = Evaluator::Parser::FreeResponseBody.new(fill_in, kind)
+        details_parser.parse(&details) if details
+
+        @section.questions << fill_in
+      end
+
+      def pick_one(text, metadata={}, &options)
+        choice = incrementing_display_order do |order|
+          Choice.new(text:          text,
+                     metadata:      metadata,
+                     display_order: order,
+                     pick:          :one)
+        end
+
+        option_parser = Evaluator::Parser::OptionBody.new(choice)
+        option_parser.parse(&options)
+
+        @section.questions << choice
+      end
+
+      def pick_any(text, metadata={}, &options)
+        choice = incrementing_display_order do |order|
+          Choice.new(text:          text,
+                     metadata:      metadata,
+                     display_order: order,
+                     pick:          :any)
+        end
+
+        option_parser = Evaluator::Parser::OptionBody.new(choice)
+        option_parser.parse(&options)
+
+        @section.questions << choice
       end
 
     end
