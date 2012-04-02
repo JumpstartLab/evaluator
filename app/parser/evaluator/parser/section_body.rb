@@ -54,6 +54,10 @@ module Evaluator
         @section.questions << choice
       end
 
+      def description(text)
+        @section.description = text
+      end
+
     end
   end
 end

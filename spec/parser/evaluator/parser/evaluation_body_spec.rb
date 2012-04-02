@@ -3,6 +3,7 @@ require 'spec_helper'
 describe Evaluator::Parser::EvaluationBody, parser: true do
   let(:section_block) do
     Proc.new do
+      description "This section revolves around fruits."
       section "Section 1" do
        free_response("Question 1") { kind    :text }
        pick_any("Question 2")      { option "banana" }
@@ -19,6 +20,12 @@ describe Evaluator::Parser::EvaluationBody, parser: true do
 
     evaluation.sections.find {|s| s.title =~ /1/}.display_order == 1
     evaluation.sections.find {|s| s.title =~ /2/}.display_order == 2
+  end
+
+  it "sets the evaluation description when present" do
+    parser.parse(&section_block)
+
+    evaluation.description.should == "This section revolves around fruits."
   end
 end
 

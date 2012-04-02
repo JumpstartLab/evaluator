@@ -22,6 +22,10 @@ module Evaluator
         @evaluation.sections << section
       end
 
+      def description(text)
+        @evaluation.description = text
+      end
+
     end
   end
 end

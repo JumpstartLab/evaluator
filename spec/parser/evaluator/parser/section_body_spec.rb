@@ -27,6 +27,20 @@ describe Evaluator::Parser::SectionBody, parser: true do
     end
   end
 
+  context "when there is a description given" do
+    let(:section_block) do
+      Proc.new do
+        description "This section revolves around fruits."
+        free_response("Do you like pears?") { kind   :text }
+      end
+    end
+    it "sets the description when present" do
+      parser.parse(&section_block)
+
+      section.description.should == "This section revolves around fruits."
+    end
+  end
+
   describe "#free_response" do
     context "when passed kind inline" do
       it "creates a free response of that kind" do
