@@ -1,38 +1,20 @@
 evaluation "Open Source Plan for Week of 4/5/12" do
   section "Last Week" do
-    question "How well did your open source work go last week?" do
-      pick(:one) do
-        option "Amazing"
-        option "Good"
-        option "Not So Good"
-        option "Disaster"
-      end
+    pick_one "How well did your open source work go last week?" do
+      option "Amazing"
+      option "Good"
+      option "Not So Good"
+      option "Disaster"
     end
 
-    question "How do you know? Did you achieve your stated goal?" do
-      free_response :text
-    end
-
-    question "How will your experience from last week influence your plan/work this week?" do
-      free_response :text
-    end
+    free_response "How do you know? Did you achieve your stated goal?", :kind => :text
+    free_response "How will your experience from last week influence your plan/work this week?", :kind => :text
   end
 
   section "Plan" do
-    question "What's the Github URL for the project you want to work on?" do
-      free_response :string
-    end
-
-    question "What do you expect to accomplish in your work time?" do
-      free_response :text
-    end
-
-    question "How do you know it's worth working on? (issues, needs, etc)" do
-      free_response :text
-    end
-
-    question "How will you measure your success?" do
-      free_response :text
-    end
+    free_response "What's the Github URL for the project you want to work on?", :kind => :text
+    free_response "What do you expect to accomplish in your work time?", :kind => :text
+    free_response "How do you know it's worth working on? (issues, needs, etc)", :kind => :text
+    free_response "How will you measure your success?", :kind => :text
   end
 end

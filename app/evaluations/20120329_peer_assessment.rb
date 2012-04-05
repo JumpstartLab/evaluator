@@ -33,7 +33,7 @@ evaluation "Peer Assessment for SalesEngine" do
     question "If applicable, what problems did you find?" do
       free_response :text
     end
-  end
+  end 
 
   section "Live Hungry" do
     question "What score did they earn for effort? (0-5 only)" do
