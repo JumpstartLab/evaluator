@@ -1,4 +1,18 @@
 lightning_talk_evaluation "mattyoho", "Lightning Talk Assessment - 4/6" do
+  description <<-DES
+Categories:
+
+Theme - Was the talk cohesive around a central idea?
+Quality - Accuracy, detail, design
+Effort - Performance/speaking, effort put in to preparation, living hungry
+
+1: Lame
+2: Fine
+3: Good (default)
+4: Great
+5: Above & Beyond
+  DES
+
   section "The Talk" do
     free_response "What is the talk about?", :kind => :string
     free_response "What score did they earn for theme?" , :kind => :integer
