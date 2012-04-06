@@ -1,4 +1,4 @@
-lightning_talk_evaluation "mattyoho", "Lightning Talk Assessment - 4/6" do
+lightning_talk_evaluation "jcasimir", "Lightning Talk Assessment - 4/6" do
   description <<-DES
 Categories:
 
