@@ -38,12 +38,11 @@ module Evaluator
       evaluation
     end
 
-    def lightning_talk_evaluation(instructor_handle, title, metadata={}, &body)
+    def lightning_talk_evaluation(group_name, title, metadata={}, &body)
       evaluation = build_evaluation(title: title, metadata: metadata, peer: true, instructor: true, &body)
 
-      group_instructor = Person.instructor_by_github_handle(instructor_handle)
       Person.instructors.each do |instructor|
-        Person.students_for(group_instructor).each do |student|
+        Person.lightning_talk_students_in(group_name).each do |student|
           evaluation.responses.build(started_at: Time.zone.now, evaluator: instructor, evaluatee: student)
         end
       end

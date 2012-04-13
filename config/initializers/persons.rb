@@ -56,5 +56,17 @@ module Evaluator
             1337807
             Andrewglass1
             adigitalnative
-            JanKoszewski)}
+            JanKoszewski
+            )}
+
+  TALK_GROUPS = {'group 1' => %w(
+            cstrahan
+            chrismanderson
+            MikeSilvis
+            athal7
+            conanr
+            mrgilman
+            1337807
+            JanKoszewski
+            )}
 end

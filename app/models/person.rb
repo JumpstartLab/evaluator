@@ -14,6 +14,12 @@ class Person < ActiveRecord::Base
     end
   end
 
+  def self.lightning_talk_students_in(group_name)
+    students.select do |student|
+      Evaluator::TALK_GROUPS[group_name].include?(student.github_handle)
+    end
+  end
+
   def self.instructors
     scoped.select {|person| Evaluator::ADMINS.include?(person.github_handle) }
   end
