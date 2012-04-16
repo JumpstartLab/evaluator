@@ -1,4 +1,8 @@
 class Evaluation < ActiveRecord::Base
+  extend MarkdownRendering
+
+  render_as_markdown :description
+
   belongs_to :person,    inverse_of: :evaluations
   belongs_to :evaluator, class_name: :Person
   belongs_to :assignment
