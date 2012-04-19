@@ -7,6 +7,10 @@
   - else
     = "by #{evaluation_response.evaluator}"
 %p#evaluation-description= evaluation.description
+- if evaluation.project?
+  %p#evaluation-total
+    - score = evaluation_response.score_results
+    = "Earned: #{score[:total_earned]} out of #{score[:total_possible]} points"
 
 = form_for(evaluation_response) do |form|
   = render partial: evaluation.sections_in_order, locals: {form: form}

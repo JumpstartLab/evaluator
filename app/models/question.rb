@@ -6,4 +6,8 @@ class Question < ActiveRecord::Base
   def self.in_order
     order(:display_order)
   end
+
+  def project_url?
+    false
+  end
 end

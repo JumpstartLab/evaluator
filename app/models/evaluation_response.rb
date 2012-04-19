@@ -6,6 +6,7 @@ class EvaluationResponse < ActiveRecord::Base
   belongs_to :evaluation, include:    :questions
 
   has_many :answers,   class_name: :ResponseAnswer, dependent: :destroy
+  has_many :questions, through: :answers
   has_many :feedbacks, dependent: :destroy, inverse_of: :response
 
   accepts_nested_attributes_for :answers
@@ -27,6 +28,20 @@ class EvaluationResponse < ActiveRecord::Base
 
   def self.completed_in_response_to(evaluation)
     complete.in_response_to(evaluation)
+  end
+
+  def score_results(group=:overall_score)
+    total_possible = score_questions(group).sum {|q| q.metadata[:range].try(:max) }
+    total_earned   = score_answers(group).sum{|a| a.value.to_i }
+
+    {total_earned: total_earned, total_possible: total_possible}
+  end
+
+  def score_answers(group)
+    answers.select {|a| score_questions(group).include?(a.question) }
+  end
+  def score_questions(group)
+    questions.select {|q| q.metadata[:group] == group }
   end
 
   def to_param

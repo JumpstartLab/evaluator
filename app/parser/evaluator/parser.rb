@@ -15,6 +15,21 @@ module Evaluator
       build_evaluation(title: title, metadata: metadata, peer: true, &body)
     end
 
+    def project_evaluation(title, metadata={}, &body)
+      evaluation = Evaluation.new(title: title, metadata: metadata, project: true)
+
+      project_url        = FillIn.new(text: "Enter the \"Git Read-Only\" URL for the project", metadata: {}, display_order: 0)
+      project_url.answer = FreeResponse.new(kind: :url, display_order: 1)
+      section            = Section.new(title: "Who You're Reviewing", metadata: {}, display_order: 0)
+      section.questions   << project_url
+      evaluation.sections << section
+
+      body_parser = Evaluator::Parser::EvaluationBody.new(evaluation)
+      body_parser.parse(&body)
+
+      evaluation
+    end
+
     def instructor_evaluation(title, metadata={}, &body)
       evaluation = build_evaluation(title: title, metadata: metadata, peer: true, instructor: true, &body)
 

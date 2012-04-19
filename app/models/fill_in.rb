@@ -12,5 +12,9 @@ class FillIn < Question
     answers << value
   end
 
+  def project_url?
+    answer.url?
+  end
+
 end
 
