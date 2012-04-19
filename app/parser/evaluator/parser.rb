@@ -18,7 +18,7 @@ module Evaluator
     def project_evaluation(title, metadata={}, &body)
       evaluation = Evaluation.new(title: title, metadata: metadata, project: true)
 
-      project_url        = FillIn.new(text: "Enter the \"Git Read-Only\" URL for the project", metadata: {}, display_order: 0)
+      project_url        = FillIn.new(text: "Enter the \"Git Read-Only\" URL for the project", metadata: {project_url: true}, display_order: 0)
       project_url.answer = FreeResponse.new(kind: :url, display_order: 1)
       section            = Section.new(title: "Who You're Reviewing", metadata: {}, display_order: 0)
       section.questions   << project_url

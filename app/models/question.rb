@@ -8,6 +8,6 @@ class Question < ActiveRecord::Base
   end
 
   def project_url?
-    false
+    metadata[:project_url]
   end
 end

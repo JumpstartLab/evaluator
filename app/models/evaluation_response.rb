@@ -31,10 +31,26 @@ class EvaluationResponse < ActiveRecord::Base
   end
 
   def score_results(group=:overall_score)
-    total_possible = score_questions(group).sum {|q| q.metadata[:range].try(:max) }
-    total_earned   = score_answers(group).sum{|a| a.value.to_i }
+    @score_results ||= begin
+      total_possible = score_questions(group).sum {|q| q.metadata[:range].try(:max) }
+      total_earned   = score_answers(group).sum{|a| a.value.to_i }
 
-    {total_earned: total_earned, total_possible: total_possible}
+      {total_earned: total_earned, total_possible: total_possible}
+    end
+  end
+
+  def total_score_results(group=:overall_score)
+    sister_responses = evaluation.responses.select do |response|
+      project_url == response.project_url
+    end
+
+    {total_earned: sister_responses.sum {|r| r.score_results[:total_earned] },
+     total_possible: sister_responses.sum {|r| r.score_results[:total_possible] }}
+  end
+
+  def project_url
+    answer = answers.find{|a| a.question.project_url? }
+    answer && answer.value
   end
 
   def score_answers(group)

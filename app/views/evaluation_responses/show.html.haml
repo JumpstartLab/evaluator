@@ -10,7 +10,10 @@
 - if evaluation.project?
   %p#evaluation-total
     - score = evaluation_response.score_results
+    - total = evaluation_response.total_score_results rescue {}
     = "Earned: #{score[:total_earned]} out of #{score[:total_possible]} points"
+    &nbsp;
+    = "Total: #{total[:total_earned]} out of #{total[:total_possible]} points"
 
 = form_for(evaluation_response) do |form|
   = render partial: evaluation.sections_in_order, locals: {form: form}
