@@ -68,5 +68,25 @@ module Evaluator
             mrgilman
             1337807
             JanKoszewski
+            ),
+            'group 2' => %w(
+            marktabler
+            maryelizbeth
+            darrellrivera
+            austenito
+            eweng
+            tkiefhaber
+            mikesea
+            Andrewglass1
+            ),
+            'group 3' => %w(
+            worace
+            tyre
+            nisargshah100
+            dkaufman
+            eliseworthy
+            travisvalentine
+            adigitalnative
+            verdi327
             )}
 end
