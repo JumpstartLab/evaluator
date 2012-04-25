@@ -15,6 +15,17 @@ module Evaluator
       build_evaluation(title: title, metadata: metadata, peer: true, &body)
     end
 
+    def code_review(reviewer, title, metadata={}, &body)
+      evaluation = build_evaluation(title: title, metadata: metadata, peer: true, instructor: true, &body)
+
+      reviewer = Person.instructor_by_github_handle(reviewer)
+      Person.students.each do |student|
+        evaluation.responses.build(started_at: Time.zone.now, evaluator: reviewer, evaluatee: student)
+      end
+
+      evaluation
+    end
+
     def project_evaluation(title, metadata={}, &body)
       evaluation = Evaluation.new(title: title, metadata: metadata, project: true)
 
