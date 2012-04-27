@@ -1,4 +1,4 @@
-lightning_talk_evaluation "group 3", "Lightning Talk Assessment - 4/13" do
+lightning_talk_evaluation "group 3", "Lightning Talk Assessment - 4/27" do
   description <<-DES
 Categories:
 
