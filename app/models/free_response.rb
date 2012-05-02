@@ -12,11 +12,15 @@ class FreeResponse < Answer
   end
 
   def string?
-    !text?
+    !text? && !integer?
   end
 
   def text?
     kind == :text
+  end
+
+  def integer?
+    kind == :integer
   end
 
   def url?

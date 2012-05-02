@@ -3,7 +3,13 @@ task "evaluator:parse_evaluation" => :environment do
   text   = File.read(ENV["FILE"])
   parser = Evaluator::Parser.new
 
-  parser.parse(text).save!
+  count = (ENV["TIMES"] || 1).to_i
+  count.times do |n|
+    evaluation = parser.parse(text)
+    evaluation.title += " #{n+1}" if count > 1
+
+    evaluation.save!
+  end
 end
 
 desc "Parse all evaluations in app/evaluations"

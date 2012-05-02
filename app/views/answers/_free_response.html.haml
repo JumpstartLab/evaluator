@@ -1,5 +1,7 @@
 = form.fields_for :answers, evaluation_response.answer_for(question) do |ff|
   - if free_response.string?
     = ff.text_field :value
+  - elsif free_response.integer?
+    = ff.select :value, question.metadata[:range].to_a
   - else
     = ff.text_area :value
