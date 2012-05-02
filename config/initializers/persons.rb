@@ -1,5 +1,6 @@
 module Evaluator
   ADMINS = %w(jcasimir mattyoho)
+  GUESTS = %w(jaw6 mig)
   PEOPLE = %w(mattyoho
             jcasimir
             marktabler
@@ -25,9 +26,9 @@ module Evaluator
             Andrewglass1
             adigitalnative
             verdi327
-            JanKoszewski)
+            JanKoszewski) + GUESTS
 
-  STUDENTS = PEOPLE - ADMINS
+  STUDENTS = PEOPLE - ADMINS - GUESTS
 
   GROUPS = {'jcasimir' => %w(
             marktabler
