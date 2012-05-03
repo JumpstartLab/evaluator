@@ -11,21 +11,20 @@ For each of your teammates, describe what it was like working with them on SonOf
 
 Talk about their communication style, the contributions, and where they fell down. Talk about ways in which you succeeded or struggled in working with them, and how you interacted.
     DES
-
-    section "Teammate 1" do
-      free_response "Teammate name:", :kind => :string
-      free_response "Describe your experience.", :kind => :text
-    end
-
-    section "Teammate 2" do
-      free_response "Teammate name:", :kind => :string
-      free_response "Describe your experience.", :kind => :text
-    end
-
-    section "Teammate 3" do
-      free_response "Teammate name:", :kind => :string
-      free_response "Describe your experience.", :kind => :text
-    end
   end
 
+  section "Teammate 1" do
+    free_response "Teammate name:", :kind => :string
+    free_response "Describe your experience.", :kind => :text
+  end
+
+  section "Teammate 2" do
+    free_response "Teammate name:", :kind => :string
+    free_response "Describe your experience.", :kind => :text
+  end
+
+  section "Teammate 3" do
+    free_response "Teammate name:", :kind => :string
+    free_response "Describe your experience.", :kind => :text
+  end
 end
