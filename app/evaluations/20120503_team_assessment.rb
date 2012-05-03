@@ -1,0 +1,31 @@
+evaluation "Team Assessment for SonOfStoreEngine" do
+  section 'Project Retrospective' do
+    free_response "What went well during the project?", :kind => :text
+    free_response "What went poorly during the project?", :kind => :text
+    free_response "Describe a learning experience from that you've taken away from the project. It can be related to programming, working with a team, process management, or other.", :kind => :text
+  end
+
+  section 'Teammate Feedback' do
+    description <<-DES
+For each of your teammates, describe what it was like working with them on SonOfStoreEngine.
+
+Talk about their communication style, the contributions, and where they fell down. Talk about ways in which you encouraged or discouraged working well with them, or how you interacted.
+    DES
+
+    section "Teammate 1" do
+      free_response "Teammate name:", :kind => :string
+      free_response "Describe your experience.", :kind => :text
+    end
+
+    section "Teammate 2" do
+      free_response "Teammate name:", :kind => :string
+      free_response "Describe your experience.", :kind => :text
+    end
+
+    section "Teammate 3" do
+      free_response "Teammate name:", :kind => :string
+      free_response "Describe your experience.", :kind => :text
+    end
+  end
+
+end
