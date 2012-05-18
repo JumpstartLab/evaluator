@@ -1,4 +1,4 @@
-project_evaluation "Skills Assessment 5/18" do
+instructor_evaluation "Skills Assessment 5/18" do
   section "Skills" do
     free_response "1. Class Decomposition", :kind => :integer, :group => :overall_score, :range => (1..3)
     free_response "2. Method Naming & Design", :kind => :integer, :group => :overall_score, :range => (1..3)
