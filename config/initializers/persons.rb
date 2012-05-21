@@ -1,8 +1,9 @@
 module Evaluator
-  ADMINS = %w(jcasimir mattyoho)
+  ADMINS = %w(jcasimir mattyoho steveklabnik)
   GUESTS = %w(jaw6 mig)
   PEOPLE = %w(mattyoho
             jcasimir
+            steveklabnik
             marktabler
             worace
             cstrahan
