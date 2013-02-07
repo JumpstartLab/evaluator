@@ -9,7 +9,7 @@ module Evaluator
               'jdendroid',  # James Denman
               '7maples',  # Jennifer Eliuk
               'danny-g',  # Danny Garcia
-              'kareemgrant'  # Kareem Grant
+              'kareemgrant',  # Kareem Grant
               'SerKnight',  # Christopher Knight
               '',  # Chelsea Komlo
               'jemaddux',  # John Maddux
