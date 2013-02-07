@@ -6,7 +6,7 @@ class Section < ActiveRecord::Base
   has_many :questions, dependent: :destroy
 
   def self.in_order
-    order("display_order ASC")
+    order("display_order ASC, created_at DESC")
   end
 
 end
