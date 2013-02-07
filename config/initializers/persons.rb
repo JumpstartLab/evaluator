@@ -60,6 +60,8 @@ module Evaluator
 
   # STUDENTS = PEOPLE - ADMINS - GUESTS
 
+  GROUPS = {}
+  TALK_GROUPS = {}
   # GROUPS = {'jcasimir' => %w(
   #           marktabler
   #           worace
