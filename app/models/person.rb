@@ -33,9 +33,10 @@ class Person < ActiveRecord::Base
   end
 
   def self.students_for(instructor)
-    students.select do |student|
-      Evaluator::GROUPS[instructor.github_handle].include?(student.github_handle)
-    end
+    []
+    # students.select do |student|
+    #   Evaluator::GROUPS[instructor.github_handle].include?(student.github_handle)
+    # end
   end
 
   def self.student_handles_and_ids
