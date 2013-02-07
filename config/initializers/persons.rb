@@ -11,7 +11,7 @@ module Evaluator
               'danny-g',  # Danny Garcia
               'kareemgrant',  # Kareem Grant
               'SerKnight',  # Christopher Knight
-              '',  # Chelsea Komlo
+              'ckoml',  # Chelsea Komlo
               'jemaddux',  # John Maddux
               'aimzatron',  # Aimee Maher
               'jmejia',  # Josh Mejia
