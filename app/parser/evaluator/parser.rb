@@ -46,13 +46,10 @@ module Evaluator
       puts "Starting IE parsing"
 
       Person.instructors.each do |instructor|
-        puts "Evals for #{instructor.inspect}"
         Person.students.each do |student|
-          puts "  Creating eval by #{instructor.inspect} for #{student.inspect}"
           evaluation.responses.build(started_at: Time.zone.now, evaluator: instructor, evaluatee: student)
         end
       end
-      puts "Ending IE parsing"
       evaluation
     end
 
