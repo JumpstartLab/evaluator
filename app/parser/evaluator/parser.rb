@@ -44,8 +44,8 @@ module Evaluator
     def instructor_evaluation(title, metadata={}, &body)
       evaluation = build_evaluation(title: title, metadata: metadata, peer: true, instructor: true, &body)
 
-      Person.each_group do |instructor, students|
-        students.each do |student|
+      Person.instructors.each do |instructor|
+        Person.students.each do |student|
           evaluation.responses.build(started_at: Time.zone.now, evaluator: instructor, evaluatee: student)
         end
       end
