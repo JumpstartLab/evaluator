@@ -5,17 +5,25 @@
     = stylesheet_link_tag    "application", media: "all"
     = javascript_include_tag "application"
     = csrf_meta_tags
-  %body
-  #navigation
-    %ul
-      - if signed_in?
-        - if Person.instructor?(current_user)
-          %li= link_to "Admin", admin_path
-        %li= link_to "Home", root_path
-        %li= link_to current_user.github_handle, edit_person_path(current_user)
-        %li= link_to "Sign out", signout_path
+  %body.container
+  #navigation.navbar.navbar-inverse.navbar-fixed-top
+    .navbar-inner
+      .container
+        %a.brand{href: root_path} Home
+        %ul.nav
+          - if signed_in?
+            - if Person.instructor?(current_user)
+              %li= link_to "Admin", admin_path
+            %li= link_to current_user.github_handle, edit_person_path(current_user)
+            %li= link_to "Sign out", signout_path
 
-  %p#notice= notice
+  - if notice
+    %p#notice.alert
+      =notice
+      %a.close{"data-dismiss" => "alert", "href" => "#"} &times;
 
-  = yield
+
+  %div{style: "margin-top: 80px;"}
+    %div.span9
+      = yield
 
