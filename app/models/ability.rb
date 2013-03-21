@@ -2,7 +2,7 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
-    if %w(mattyoho jcasimir).include?(user.github_handle)
+    if Evaluator::ADMIN.include?(user.github_handle)
       can :manage, :all
     else
       can :read, Evaluation
