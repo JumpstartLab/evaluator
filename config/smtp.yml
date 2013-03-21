@@ -1,0 +1,6 @@
+development: &default
+  host: 'localhost:3000'
+test:
+  <<: *default
+production:
+  host: 'eval.jumpstartlab.com'

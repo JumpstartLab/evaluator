@@ -1,23 +1,23 @@
-Evaluator
-----------
+# Evaluator
 
-Create and review self-assessments for Hungry Academy students.
+Create and review self-assessments for Jumpstart Lab students.
 
-Please set up the following in /etc/hosts to support GitHub Oauth:
+## Configuration
 
-    127.0.0.1  e.ha.local
-    127.0.0.1  i.ha.local
-    127.0.0.1  r.ha.local
+### GitHub
 
-    127.0.0.1  e.hungryacademy.local
-    127.0.0.1  i.hungryacademy.local
-    127.0.0.1  r.hungryacademy.local
+This application uses GitHub for authentication. This requires you to specify a valid GitHub application (secret & key).
 
-    127.0.0.1  evaluator.hungryacademy.local
-    127.0.0.1  identity.hungryacademy.local
-    127.0.0.1  reader.hungryacademy.local
+Settings can be defined in the **config/github.yml** file:
 
-Please use port 3000 for this app.
+```yaml
+development: &default
+  key: '33f9f1839922ff589b2a'
+  secret: '00de8ac3813c0087f0a4bc7efcff9296af44cd0d'
+production:
+```
+
+###
 
 Importing an Evaluation
 =======================
