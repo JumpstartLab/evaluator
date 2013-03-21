@@ -1,6 +1,6 @@
 development: &default
-  key: '33f9f1839922ff589b2a'
-  secret: '00de8ac3813c0087f0a4bc7efcff9296af44cd0d'
+  key: '025e361819791eb019da'
+  secret: 'e182b3a9e2e24f85755a53fd9711abd3e901ce0c'
 test:
   <<: *default
 production: {}

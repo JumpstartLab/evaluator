@@ -33,6 +33,7 @@ group :production do
 end
 
 group :development, :test do
+  gem 'certified'
   gem 'sqlite3'
   gem 'rspec-rails'
   gem 'factory_girl_rails'
