@@ -1,4 +1,4 @@
 = content_tag_for(:div, question) do
-  = question.text
+  %p= question.text
   = form.fields_for :answers, evaluation_response.answers.find {|a| a.question == question } do |ff|
     = render partial: question.answers, locals: {form: ff}, as: :option

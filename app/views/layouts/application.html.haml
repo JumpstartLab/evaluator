@@ -17,13 +17,13 @@
             %li= link_to current_user.github_handle, edit_person_path(current_user)
             %li= link_to "Sign out", signout_path
 
-  - if notice
-    %p#notice.alert
-      =notice
-      %a.close{"data-dismiss" => "alert", "href" => "#"} &times;
-
-
   %div{style: "margin-top: 80px;"}
+    %div.span9
+      - if notice
+        %p#notice.alert
+          =notice
+          %a.close{"data-dismiss" => "alert", "href" => "#"} &times;
+
     %div.span9
       = yield
 

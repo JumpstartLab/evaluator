@@ -1,3 +1,3 @@
 = content_tag_for(:div, question) do
-  = question.text
+  %p= question.text
   = render partial: question.answer, locals: {form: form, question: question}
