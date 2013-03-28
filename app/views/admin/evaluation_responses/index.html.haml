@@ -1,9 +1,8 @@
 %ul
-  - evaluation_responses.group_by(&:evaluation_id).reverse_each do |evaluation_id, responses|
+  - evaluation_responses.evaluation_with_evaluator_responses do |evaluation, evaluator_responses|
     %li
-      = Evaluation.find(evaluation_id).title
-      - responses.group_by{|r| r.evaluator.id }.each do |evaluator_id, resps|
+      %h3= evaluation.title
+      - evaluator_responses.each do |evaluator, responses|
         %ul
-          - resps.each do |resp|
-            - link_text = "#{resp.evaluator}#{" - for " + resp.evaluatee.to_s if resp.for_peer?}"
-            %li= link_to link_text, edit_evaluation_response_path(resp)
+          - responses.each do |response|
+            %li= link_to link_text(response), edit_evaluation_response_path(response)

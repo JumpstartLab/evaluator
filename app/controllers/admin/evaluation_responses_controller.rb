@@ -6,7 +6,7 @@ module Admin
     before_filter :prepend_partial_prefix
 
     def index
-      self.evaluation_responses = EvaluationResponse.order(:evaluation_id, :evaluator_id, :evaluatee_id).includes(:evaluator, :evaluatee)
+      self.evaluation_responses = EvaluationsResponsePresenter.new
 
       respond_to do |format|
         format.html
