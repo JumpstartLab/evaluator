@@ -40,7 +40,7 @@ class Person < ActiveRecord::Base
   end
 
   def self.student_handles_and_ids
-    students.map {|s| [s.github_handle, s.id] }
+    instructors.map {|s| [s.github_handle, s.id] }
   end
 
   def self.instructor?(person)

@@ -18,7 +18,7 @@ pre {
 a {
   color: #000;
   &:visited {
-    color: #666; }
+    color: #777; }
   &:hover {
     color: #fff;
     background-color: #000; } }
@@ -28,7 +28,8 @@ div {
     margin-bottom: 10px; } }
 
 #notice {
-  color: green; }
+  color: green;
+  margin-top: 40px; }
 
 .field_with_errors {
   padding: 2px;

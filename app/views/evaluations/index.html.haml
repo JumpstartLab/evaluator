@@ -1,18 +1,32 @@
-%ul
+%table.evaluations.table-striped.span9
+  %thead
+    %tr
+      %th Evaluation
+      %th Completed
+      %th
+      %th
   - evaluations.each do |evaluation|
-    %li
-      = evaluation.title
+    %tr
+      %td= evaluation.title
       - if resp = current_user.response_for(evaluation)
         - if resp.completed?
-          = "Ended #{time_ago_in_words(resp.completed_at)} ago"
+          %td= "Ended #{time_ago_in_words(resp.completed_at)} ago"
         - elsif resp.submitted?
-          = "Taken #{time_ago_in_words(resp.submitted_at)} ago"
-        = link_to "View", evaluation_response_path(resp)
+          %td= "Completed #{time_ago_in_words(resp.submitted_at)} ago"
+        - else
+          %td= "Incomplete"
+
         - unless resp.completed?
-          = link_to "Edit", edit_evaluation_response_path(resp)
+          %td= link_to "Edit", edit_evaluation_response_path(resp), class: 'btn btn-warning'
+        - else
+          %td
+
+        %td= link_to "View", evaluation_response_path(resp), class: 'btn btn-info'
       - else
         = form_for EvaluationResponse.new(evaluation: evaluation) do |form|
-          = form.hidden_field :evaluation_id
-          = form.submit "Take Evaluation"
-          - if evaluation.peer?
-            = form.select :evaluatee_id, Person.student_handles_and_ids
+          %td Not Started
+          %td{colspan: 2}
+            = form.hidden_field :evaluation_id
+            = form.submit "Start Evaluation", class: "btn btn-info btn-large"
+            - if evaluation.peer?
+              = form.select :evaluatee_id, Person.student_handles_and_ids

@@ -11,23 +11,20 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :github_handle %><br />
+    <%= f.label :github_handle %>
     <%= f.text_field :github_handle, disabled: :disabled %>
-  </div>
-  <div class="field">
-    <%= f.label :first_name %><br />
-    <%= f.text_field :first_name %>
-  </div>
-  <div class="field">
-    <%= f.label :last_name %><br />
-    <%= f.text_field :last_name %>
-  </div>
-  <div class="field">
-    <%= f.label :email %><br />
+
+    <%= f.label "Name" %>
+
+    <%= f.text_field :first_name, class: "input-small" %>
+
+    <%= f.text_field :last_name, class: "input-small" %>
+
+    <%= f.label :email %>
     <%= f.text_field :email %>
-  </div>
+
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit class: "btn btn-primary btn-large" %>
   </div>
+
 <% end %>

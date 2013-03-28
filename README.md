@@ -22,6 +22,9 @@ production:
 Importing an Evaluation
 =======================
 
-There is an example evaluation using the correct DSL available in `app/evaluations/20120308_preassessment.rb` for reference. Parse and import the evaluation by running:
+There is an example evaluation using the correct DSL available in `app/evaluations/hungry_academy/20120308_preassessment.rb` for reference. Parse and import the evaluation by running:
 
-    [bundle exec] rake evaluator:parse_evaluation FILE=app/evaluations/20120308_preassessment.rb
+
+```bash
+[bundle exec] rake evaluation:parse FILE=app/evaluations/hungry_academy/20120308_preassessment.rb
+```
