@@ -5,4 +5,7 @@
       - evaluator_responses.each do |evaluator, responses|
         %ul
           - responses.each do |response|
-            %li= link_to link_text(response), edit_evaluation_response_path(response)
+            - if response.evaluator == current_user
+              %li= link_to link_text(response), edit_evaluation_response_path(response)
+            - else
+              %li= link_to "#{link_text(response)} (read-only)", evaluation_response_path(response)
