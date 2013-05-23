@@ -96,6 +96,8 @@ GEM
       omniauth (~> 1.0)
     pg (0.13.2)
     polyglot (0.3.3)
+    puma (2.0.1)
+      rack (>= 1.1, < 2.0)
     rack (1.4.4)
     rack-cache (1.2)
       rack (>= 0.4)
@@ -172,6 +174,7 @@ DEPENDENCIES
   omniauth
   omniauth-github
   pg
+  puma
   rails (~> 3.2.2)
   redcarpet
   rspec-rails

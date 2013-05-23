@@ -8,6 +8,8 @@ gem 'cancan'
 gem 'haml-rails'
 gem 'redcarpet'
 gem 'pg'
+gem 'puma'
+
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
