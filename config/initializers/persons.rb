@@ -1,5 +1,5 @@
 module Evaluator
-  ADMINS = %w(jcasimir steveklabnik kytrinyx burtlo)
+  ADMINS = %w(jcasimir steveklabnik kytrinyx burtlo cookrn seeflanigan)
   GUESTS = %w(none)
   STUDENTS = [
               'blairand',  # Blair Anderson
