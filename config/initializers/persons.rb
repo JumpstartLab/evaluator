@@ -2,7 +2,7 @@ module Evaluator
   ADMINS = %w(jcasimir steveklabnik kytrinyx burtlo cookrn seeflanigan)
   GUESTS = %w(none)
   STUDENTS = [
-              'blairand',  # Blair Anderson
+              'blairanderson',  # Blair Anderson
               'pnblackwell',  # Paul Blackwell
               'philbattos',  # Phil Battos
               'ebdrummond',  # Erin Drummond

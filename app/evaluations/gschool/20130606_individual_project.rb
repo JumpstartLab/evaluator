@@ -1,4 +1,4 @@
-instructor_evaluation "Instructor Assessment for FeedEngine" do
+instructor_evaluation "Instructor Assessment for the Individual Projects" do
   section "Models" do
     description "
     <ul>
