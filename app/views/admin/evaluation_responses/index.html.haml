@@ -7,5 +7,5 @@
           - responses.each do |response|
             - if response.evaluator == current_user
               %li= link_to link_text(response), edit_evaluation_response_path(response)
-            - elsif response.score_results[:total_earned] > 0
+            - else
               %li= link_to "#{link_text(response)} (read-only)", evaluation_response_path(response)
